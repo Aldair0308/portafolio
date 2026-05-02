@@ -1,45 +1,57 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Contact() {
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSent(true);
+    setTimeout(() => setSent(false), 3000);
+  };
+
   return (
-    <div className="bg-black/30 backdrop-blur-lg border border-neon/30 rounded-xl p-8 w-full max-w-md mx-4">
-      <h2 className="text-2xl font-bold text-white mb-4 text-center">Contacto</h2>
-      <form
-        className="flex flex-col gap-4"
-        onSubmit={(e) => {
-          e.preventDefault();
-          alert('Mensaje enviado (simulado)');
-        }}
+    <section className="min-h-screen bg-gray-900 flex items-center justify-center py-20 px-4">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="max-w-md w-full bg-gray-800/80 backdrop-blur-lg rounded-xl p-8"
       >
-        <input
-          type="text"
-          placeholder="Nombre"
-          className="p-3 rounded bg-gray-800/60 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-neon transition"
-          required
-        />
-        <input
-          type="email"
-          placeholder="Correo"
-          className="p-3 rounded bg-gray-800/60 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-neon transition"
-          required
-        />
-        <textarea
-          placeholder="Mensaje"
-          className="p-3 rounded bg-gray-800/60 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-neon transition"
-          rows={4}
-          required
-        />
-        <motion.button
-          type="submit"
-          whileHover={{ scale: 1.05, backgroundColor: '#00ffff80' }}
-          whileTap={{ scale: 0.95 }}
-          className="p-3 bg-neon text-black rounded hover:bg-neon/80 transition"
+        <h2 className="text-2xl font-bold text-neon mb-6 text-center">Contact</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            placeholder="Name"
+            className="w-full p-3 bg-gray-700 rounded text-white focus:ring-2 focus:ring-neon outline-none"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            className="w-full p-3 bg-gray-700 rounded text-white focus:ring-2 focus:ring-neon outline-none"
+            required
+          />
+          <textarea
+            placeholder="Message"
+            rows={4}
+            className="w-full p-3 bg-gray-700 rounded text-white focus:ring-2 focus:ring-neon outline-none"
+            required
+          />
+          <button
+            type="submit"
+            className="w-full p-3 bg-neon text-black font-bold rounded hover:bg-neon/80 transition"
+          >
+            {sent ? "Sent!" : "Send"}
+          </button>
+        </form>
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          className="block mt-4 text-center text-neon text-sm hover:underline"
         >
-          Enviar
-        </motion.button>
-        <a href="/resume.pdf" target="_blank" className="mt-4 text-sm text-neon hover:underline">Descargar CV</a>
-      </form>
-    </div>
+          Download CV
+        </a>
+      </motion.div>
+    </section>
   );
 }
