@@ -213,103 +213,32 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Rainbow Effect Styles */}
+      {/* Rainbow Animation Styles */}
       <style>{`
+        @keyframes rainbow {
+          0% { color: #ff0000; }
+          14% { color: #ff7f00; }
+          28% { color: #ffff00; }
+          42% { color: #00ff00; }
+          57% { color: #0000ff; }
+          71% { color: #4b0082; }
+          85% { color: #9400d3; }
+          100% { color: #ff0000; }
+        }
+        
+        @keyframes rainbow-bg {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        
         .rainbow-text {
-          position: relative;
-          display: inline-block;
-          background: linear-gradient(90deg, 
-            #ff0000 0%,
-            #ff8800 12%,
-            #ffff00 24%,
-            #88ff00 36%,
-            #00ff00 48%,
-            #00ff88 60%,
-            #00ffff 72%,
-            #0088ff 84%,
-            #ff00ff 100%);
-          background-size: 500% 200%;
+          background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+          background-size: 400% 400%;
           -webkit-background-clip: text;
           background-clip: text;
           -webkit-text-fill-color: transparent;
-          animation: rainbow-flow 6s ease-in-out infinite;
-        }
-        
-        .rainbow-text::before {
-          content: 'Aldair';
-          position: absolute;
-          top: 0;
-          left: 0;
-          background: linear-gradient(90deg, 
-            rgba(255,192,203,0.8) 0%, 
-            rgba(255,255,0,0.6) 33%, 
-            rgba(144,238,144,0.8) 66%, 
-            rgba(255,192,203,0.8) 100%);
-          background-size: 200% 100%;
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: rainbow-shine 1s ease-in-out infinite;
-          filter: blur(0.5px);
-        }
-        
-        @keyframes rainbow-flow {
-          0% {
-            background-position: 0% 50%;
-          }
-          25% {
-            background-position: 100% 25%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          75% {
-            background-position: 0% 75%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-        
-        @keyframes rainbow-shine {
-          0%, 100% {
-            opacity: 0.4;
-            transform: translateX(0);
-          }
-          50% {
-            opacity: 0.9;
-            transform: translateX(5px);
-          }
-        }
-        
-        @keyframes waterRipple {
-          0% {
-            transform: translate(-50%, -50%) scale(0);
-            opacity: 1;
-          }
-          100% {
-            transform: translate(-50%, -50%) scale(2);
-            opacity: 0;
-          }
-        }
-        
-        @keyframes causticMove {
-          0%, 100% {
-            transform: translate(0, 0) scale(1);
-            opacity: 0.2;
-          }
-          25% {
-            transform: translate(20px, -15px) scale(1.1);
-            opacity: 0.25;
-          }
-          50% {
-            transform: translate(-10px, 20px) scale(0.95);
-            opacity: 0.15;
-          }
-          75% {
-            transform: translate(-25px, -10px) scale(1.05);
-            opacity: 0.2;
-          }
+          animation: rainbow-bg 3s ease infinite;
         }
       `}</style>
     </section>
