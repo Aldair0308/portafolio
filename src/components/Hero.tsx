@@ -207,18 +207,19 @@ export default function Hero() {
           display: inline-block;
           background: linear-gradient(90deg, 
             #ff0000 0%,
-            #ff9500 14%,
-            #ffd600 28%,
-            #8aff00 42%,
-            #00d4ff 57%,
-            #0066ff 71%,
-            #9500ff 85%,
+            #ff8800 12%,
+            #ffff00 24%,
+            #88ff00 36%,
+            #00ff00 48%,
+            #00ff88 60%,
+            #00ffff 72%,
+            #0088ff 84%,
             #ff00ff 100%);
-          background-size: 400% 200%;
+          background-size: 500% 200%;
           -webkit-background-clip: text;
           background-clip: text;
           -webkit-text-fill-color: transparent;
-          animation: rainbow-flow 4s ease-in-out infinite;
+          animation: rainbow-flow 6s ease-in-out infinite;
         }
         
         .rainbow-text::before {
@@ -227,34 +228,44 @@ export default function Hero() {
           top: 0;
           left: 0;
           background: linear-gradient(90deg, 
-            rgba(255,255,0,0.8) 0%, 
-            rgba(255,255,0,0.6) 25%, 
-            rgba(255,255,0,0.8) 50%, 
-            rgba(255,255,0,0.6) 75%, 
-            rgba(255,255,0,0.8) 100%);
+            rgba(255,192,203,0.8) 0%, 
+            rgba(255,255,0,0.6) 33%, 
+            rgba(144,238,144,0.8) 66%, 
+            rgba(255,192,203,0.8) 100%);
           background-size: 200% 100%;
           -webkit-background-clip: text;
           background-clip: text;
           -webkit-text-fill-color: transparent;
-          animation: rainbow-shine 1.5s ease-in-out infinite;
+          animation: rainbow-shine 1s ease-in-out infinite;
           filter: blur(0.5px);
         }
         
         @keyframes rainbow-flow {
-          0%, 100% {
-            background-position: 0% 0%;
+          0% {
+            background-position: 0% 50%;
+          }
+          25% {
+            background-position: 100% 25%;
           }
           50% {
-            background-position: 100% 0%;
+            background-position: 100% 50%;
+          }
+          75% {
+            background-position: 0% 75%;
+          }
+          100% {
+            background-position: 0% 50%;
           }
         }
         
         @keyframes rainbow-shine {
           0%, 100% {
-            opacity: 0.3;
+            opacity: 0.4;
+            transform: translateX(0);
           }
           50% {
-            opacity: 0.8;
+            opacity: 0.9;
+            transform: translateX(5px);
           }
         }
       `}</style>
