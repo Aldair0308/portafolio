@@ -7,32 +7,32 @@ export default function Projects() {
 
   const title = t("Proyectos", "Projects");
   const subtitle = language === "es" 
-    ? "Proyectos recientes" 
-    : "Recent projects";
+    ? "Proyectos recientes en los que he trabajado" 
+    : "Recent projects I've worked on";
   
   const projects = [
     {
-      name: language === "es" ? "E-commerce" : "E-commerce",
+      name: language === "es" ? "Plataforma E-commerce" : "E-commerce Platform",
       desc: language === "es" 
-        ? "Plataforma full-stack con pagos Stripe" 
-        : "Full-stack with Stripe payments",
-      tech: ["React", "Node.js", "Stripe"],
+        ? "Plataforma full-stack con pagos Stripe, panel de admin y analytics" 
+        : "Full-stack platform with Stripe payments, admin panel and analytics",
+      tech: ["React", "Node.js", "Stripe", "PostgreSQL"],
       color: "from-cyan-500 to-blue-500"
     },
     {
-      name: language === "es" ? "Dashboard" : "Dashboard",
+      name: language === "es" ? "Dashboard Analítico" : "Analytics Dashboard",
       desc: language === "es" 
-        ? "Dashboard en tiempo real" 
-        : "Real-time dashboard",
-      tech: ["React", "WebSocket", "D3.js"],
+        ? "Dashboard en tiempo real con WebSockets y visualizaciones" 
+        : "Real-time dashboard with WebSockets and visualizations",
+      tech: ["React", "WebSocket", "D3.js", "MongoDB"],
       color: "from-purple-500 to-pink-500"
     },
     {
-      name: language === "es" ? "RESTful API" : "RESTful API",
+      name: language === "es" ? "API RESTful" : "RESTful API",
       desc: language === "es" 
-        ? "API escalable con JWT" 
-        : "Scalable API with JWT",
-      tech: ["Node.js", "Express", "JWT"],
+        ? "API escalable con autenticación JWT y documentación" 
+        : "Scalable API with JWT authentication and documentation",
+      tech: ["Node.js", "Express", "JWT", "Redis"],
       color: "from-emerald-500 to-teal-500"
     }
   ];
@@ -40,7 +40,6 @@ export default function Projects() {
   return (
     <section className={`min-h-screen flex items-center justify-center px-3 md:px-4 py-16 ${theme.colors.backgroundSecondary}`}>
       <div className="max-w-lg md:max-w-6xl w-full">
-        {/* Section Header - Smaller for mobile */}
         <div className="text-center mb-8 md:mb-12">
           <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 bg-gradient-to-r ${theme.colors.gradient} text-white`}>
             {language === "es" ? "Mi Trabajo" : "My Work"}
@@ -52,30 +51,25 @@ export default function Projects() {
           <div className={`w-16 h-0.5 mx-auto rounded-full bg-gradient-to-r ${theme.colors.gradient} mt-3`} />
         </div>
         
-        {/* Single column on mobile, 3 on desktop */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {projects.map((project, i) => (
             <div 
               key={i} 
               className={`relative p-0.5 rounded-xl md:rounded-2xl bg-gradient-to-br ${project.color} hover:scale-[1.02] transition-all duration-300`}
             >
-              <div className={`relative p-4 md:p-5 rounded-xl ${theme.colors.card} border ${theme.colors.border}`}>
-                {/* Project Number - Smaller */}
+              <div className={`relative p-4 md:p-5 rounded-xl ${theme.colors.card} border ${theme.colors.border} flex flex-col`}>
                 <div className={`text-4xl md:text-5xl font-bold opacity-10 mb-2 ${theme.colors.text}`}>
                   {String(i + 1).padStart(2, '0')}
                 </div>
                 
-                {/* Project Title - Smaller */}
                 <h3 className={`text-lg md:text-xl font-bold mb-2 ${theme.colors.text}`}>
                   {project.name}
                 </h3>
                 
-                {/* Description - Smaller */}
-                <p className={`text-xs md:text-sm mb-3 ${theme.colors.textSecondary}`}>
+                <p className={`text-xs md:text-sm mb-3 flex-grow ${theme.colors.textSecondary}`}>
                   {project.desc}
                 </p>
                 
-                {/* Technologies - Smaller tags */}
                 <div className="flex flex-wrap gap-1.5 mb-2">
                   {project.tech.map((tech, j) => (
                     <span 
@@ -85,6 +79,13 @@ export default function Projects() {
                       {tech}
                     </span>
                   ))}
+                </div>
+                
+                <div className={`flex items-center gap-2 text-xs md:text-sm font-medium ${theme.colors.accent}-400`}>
+                  {language === "es" ? "Ver más" : "View more"}
+                  <svg className="w-3 md:w-4 h-3 md:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </div>
               </div>
             </div>

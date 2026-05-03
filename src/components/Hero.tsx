@@ -191,24 +191,29 @@ export default function Hero() {
                 <div className="w-2.5 h-2.5 lg:w-3 lg:h-3 rounded-full bg-green-500/80" />
               </div>
               <div className="flex items-center gap-1 lg:gap-2">
-                <span className="text-gray-500 text-xs font-mono hidden sm:inline">portfolio.ts</span>
-                <span className={`px-1.5 lg:px-2 py-0.5 text-xs rounded hidden lg:inline`}>TypeScript</span>
+                <span className="text-gray-500 text-xs font-mono">portfolio.ts</span>
+                <span className={`ml-1 lg:ml-3 px-1.5 lg:px-2 py-0.5 bg-${theme.colors.accent}-500/20 text-${theme.colors.accent}-400 text-xs rounded`}>TypeScript</span>
               </div>
             </div>
 
             <div className="p-3 lg:p-5 font-mono text-xs md:text-sm overflow-x-auto">
               <div className="flex">
                 <div className="text-gray-600/50 mr-2 lg:mr-4 text-right select-none pr-2 lg:pr-3 border-r border-gray-800/50">
-                  <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div>
+                  <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div>
                 </div>
                 <div className="pl-2 lg:pl-3 space-y-0.5 lg:space-y-1">
-                  <div><span className="text-purple-400">interface</span> <span className={`text-${theme.colors.accent}-400`}>Dev</span> {"{"}</div>
-                  <div className="pl-2 lg:pl-4"><span className="text-yellow-300">name:</span> <span className="text-yellow-300">"Aldair"</span>;</div>
-                  <div className="pl-2 lg:pl-4"><span className="text-yellow-300">role:</span> <span className="text-yellow-300">"Full-Stack"</span>;</div>
-                  <div className="pl-2 lg:pl-4 hidden sm:inline"><span className="text-yellow-300">skills:</span> <span className="text-orange-300">[React, Node, TS]</span>;</div>
-                  <div className="pl-2 lg:pl-4"><span className="text-blue-300">exp:</span> <span className="text-blue-300">5+</span>;</div>
-                  <div><span className="text-green-400">available:</span> <span className="text-green-400">true</span>;</div>
+                  <div><span className="text-purple-400">interface</span> <span className={`text-${theme.colors.accent}-400`}>Developer</span> {"{"}</div>
+                  <div className="pl-2 lg:pl-4"><span className="text-gray-400">name:</span> <span className="text-yellow-300">"Aldair"</span>;</div>
+                  <div className="pl-2 lg:pl-4"><span className="text-gray-400">role:</span> <span className="text-yellow-300">"Full-Stack"</span>;</div>
+                  <div className="pl-2 lg:pl-4"><span className="text-gray-400">skills:</span> <span className="text-yellow-300">[</span><span className="text-orange-300">React</span><span className="text-gray-400">,</span> <span className="text-orange-300">Node</span><span className="text-gray-400">,</span> <span className="text-orange-300">TS</span><span className="text-yellow-300">]</span>;</div>
+                  <div className="pl-2 lg:pl-4"><span className="text-gray-400">experience:</span> <span className="text-blue-300">5</span><span className="text-gray-400">{t("+ años", "+ years")}</span></div>
+                  <div className="pl-2 lg:pl-4"><span className="text-gray-400">available:</span> <span className="text-green-400">true</span>;</div>
                   <div>{"}"}</div>
+                  <div className="h-2 md:h-3" />
+                  <div><span className="text-gray-500">{t("// Proyectos", "// Projects")}</span></div>
+                  <div><span className="text-purple-400">const</span> <span className={`text-${theme.colors.accent}-400`}>projects</span> = <span className="text-purple-400">new</span> <span className={`text-${theme.colors.accent}-400`}>Portfolio</span>();</div>
+                  <div><span className={`text-${theme.colors.accent}-400`}>projects</span>.<span className="text-blue-400">build</span>();</div>
+                  <div><span className="text-green-400">await</span> <span className={`text-${theme.colors.accent}-400`}>deliver</span>(<span className="text-yellow-300">"excellence"</span>);</div>
                 </div>
               </div>
             </div>
