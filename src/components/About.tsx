@@ -1,7 +1,9 @@
 import { useLanguage } from "../LanguageContext";
+import { useTheme } from "../ThemeContext";
 
 export default function About() {
   const { t, language } = useLanguage();
+  const { theme } = useTheme();
 
   const title = language === "es" ? "Sobre Mí" : "About Me";
   const skillsTitle = language === "es" ? "Habilidades" : "Skills";
@@ -10,31 +12,31 @@ export default function About() {
     : "Full-stack developer with 5+ years of experience building web applications with React, Node.js, TypeScript and cloud services. Passionate about clean architecture, maintainable code and delivering exceptional user experiences.";
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gray-900 px-4">
+    <section className={`min-h-screen flex items-center justify-center px-4 ${theme.colors.backgroundSecondary}`}>
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-8 text-neon">
+        <h2 className={`text-4xl md:text-5xl font-bold text-center mb-8 ${theme.colors.text}`}>
           {title}
         </h2>
         
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="flex justify-center">
-            <div className="w-48 h-48 rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center text-6xl">
+            <div className={`w-48 h-48 rounded-full bg-gradient-to-br ${theme.colors.gradient} flex items-center justify-center text-6xl`}>
               👨‍💻
             </div>
           </div>
           
-          <div className="text-gray-300 text-lg leading-relaxed">
+          <div className={`text-lg leading-relaxed ${theme.colors.textSecondary}`}>
             <p className="mb-6">{description}</p>
             
-            <h3 className="text-xl font-semibold text-white mb-4">{skillsTitle}</h3>
+            <h3 className={`text-xl font-semibold mb-4 ${theme.colors.text}`}>{skillsTitle}</h3>
             <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1 bg-gray-800 rounded-full text-sm">React</span>
-              <span className="px-3 py-1 bg-gray-800 rounded-full text-sm">Node.js</span>
-              <span className="px-3 py-1 bg-gray-800 rounded-full text-sm">TypeScript</span>
-              <span className="px-3 py-1 bg-gray-800 rounded-full text-sm">PostgreSQL</span>
-              <span className="px-3 py-1 bg-gray-800 rounded-full text-sm">MongoDB</span>
-              <span className="px-3 py-1 bg-gray-800 rounded-full text-sm">AWS</span>
-              <span className="px-3 py-1 bg-gray-800 rounded-full text-sm">Docker</span>
+              <span className={`px-3 py-1 rounded-full text-sm ${theme.colors.backgroundTertiary} ${theme.colors.textSecondary}`}>React</span>
+              <span className={`px-3 py-1 rounded-full text-sm ${theme.colors.backgroundTertiary} ${theme.colors.textSecondary}`}>Node.js</span>
+              <span className={`px-3 py-1 rounded-full text-sm ${theme.colors.backgroundTertiary} ${theme.colors.textSecondary}`}>TypeScript</span>
+              <span className={`px-3 py-1 rounded-full text-sm ${theme.colors.backgroundTertiary} ${theme.colors.textSecondary}`}>PostgreSQL</span>
+              <span className={`px-3 py-1 rounded-full text-sm ${theme.colors.backgroundTertiary} ${theme.colors.textSecondary}`}>MongoDB</span>
+              <span className={`px-3 py-1 rounded-full text-sm ${theme.colors.backgroundTertiary} ${theme.colors.textSecondary}`}>AWS</span>
+              <span className={`px-3 py-1 rounded-full text-sm ${theme.colors.backgroundTertiary} ${theme.colors.textSecondary}`}>Docker</span>
             </div>
           </div>
         </div>

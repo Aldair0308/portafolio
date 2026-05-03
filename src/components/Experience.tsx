@@ -1,7 +1,9 @@
 import { useLanguage } from "../LanguageContext";
+import { useTheme } from "../ThemeContext";
 
 export default function Experience() {
   const { language } = useLanguage();
+  const { theme } = useTheme();
   
   const title = language === "es" ? "Experiencia" : "Experience";
 
@@ -25,18 +27,18 @@ export default function Experience() {
   ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gray-800 px-4 py-20">
+    <section className={`min-h-screen flex items-center justify-center px-4 py-20 ${theme.colors.backgroundSecondary}`}>
       <div className="max-w-3xl mx-auto w-full">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-neon">{title}</h2>
+        <h2 className={`text-4xl md:text-5xl font-bold text-center mb-12 ${theme.colors.text}`}>{title}</h2>
         
         <div className="space-y-6">
           {experience.map((exp, i) => (
             <div key={i} className="flex gap-4">
-              <div className="w-4 h-4 bg-neon rounded-full mt-1 flex-shrink-0" />
+              <div className={`w-4 h-4 rounded-full mt-1 flex-shrink-0 bg-gradient-to-r ${theme.colors.gradient}`} />
               <div>
-                <h3 className="font-bold text-white text-lg">{exp.role} @ {exp.company}</h3>
-                <p className="text-sm text-gray-400">{exp.period}</p>
-                <p className="text-gray-300 mt-1">{exp.desc}</p>
+                <h3 className={`font-bold text-lg ${theme.colors.text}`}>{exp.role} @ {exp.company}</h3>
+                <p className={`text-sm ${theme.colors.textMuted}`}>{exp.period}</p>
+                <p className={`mt-1 ${theme.colors.textSecondary}`}>{exp.desc}</p>
               </div>
             </div>
           ))}
