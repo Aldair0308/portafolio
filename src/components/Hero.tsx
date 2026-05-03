@@ -1,13 +1,17 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { useLanguage } from "../LanguageContext";
 
 export default function Hero() {
+  const { language, setLanguage, t } = useLanguage();
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const [ripples, setRipples] = useState<Array<{ x: number; y: number; id: number }>>([]);
 
   const addRipple = useCallback((x: number, y: number) => {
     const id = Date.now();
     setRipples(prev => [...prev.slice(-5), { x, y, id }]);
-    setTimeout(() => setRipples(prev => prev.filter(r => r.id !== id)), 800);
+    setTimeout(() => {
+      setRipples(prev => prev.filter(r => r.id !== id));
+    }, 800);
   }, []);
 
   useEffect(() => {
@@ -40,17 +44,12 @@ export default function Hero() {
       }}/>
 
       {/* Dynamic mouse glow */}
-      <div 
-        className="absolute inset-0 transition-all duration-75 ease-out pointer-events-none"
-        style={{
-          background: `
-            radial-gradient(600px circle at ${mousePos.x}% ${mousePos.y}%, 
-            rgba(6,182,212,0.15) 0%, transparent 50%),
-            radial-gradient(500px circle at ${100 - mousePos.x}% ${100 - mousePos.y}%, 
-            rgba(139,92,246,0.12) 0%, transparent 50%)
-          `
-        }}
-      />
+      <div className="absolute inset-0 transition-all duration-75 ease-out pointer-events-none" style={{
+        background: `
+          radial-gradient(600px circle at ${mousePos.x}% ${mousePos.y}%, rgba(6,182,212,0.15) 0%, transparent 50%),
+          radial-gradient(500px circle at ${100 - mousePos.x}% ${100 - mousePos.y}%, rgba(139,92,246,0.12) 0%, transparent 50%)
+        `
+      }}/>
 
       {/* Ripple */}
       {ripples.map((ripple) => (
@@ -74,60 +73,78 @@ export default function Hero() {
         
         {/* LEFT COLUMN - INFO */}
         <div className="w-full lg:w-1/2 text-center lg:text-left order-2 lg:order-1">
+          {/* Language Toggle */}
+          <div className="mb-4 flex justify-center lg:justify-start gap-2">
+            <button 
+              onClick={() => setLanguage("es")}
+              className={`px-3 py-1 rounded-full text-sm font-medium transition ${language === "es" ? "bg-cyan-500 text-black" : "bg-gray-800 text-gray-400 hover:text-white"}`}
+            >
+              ES
+            </button>
+            <button 
+              onClick={() => setLanguage("en")}
+              className={`px-3 py-1 rounded-full text-sm font-medium transition ${language === "en" ? "bg-cyan-500 text-black" : "bg-gray-800 text-gray-400 hover:text-white"}`}
+            >
+              EN
+            </button>
+          </div>
+
           {/* Tag */}
           <div className="mb-6">
             <span className="px-4 py-1.5 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-400 text-sm font-medium tracking-wide">
-              FULLSTACK DEVELOPER
+              {t("DESARROLLADOR FULLSTACK", "FULLSTACK DEVELOPER")}
             </span>
           </div>
 
-          {/* Name */}
+          {/* Name with Rainbow Animation */}
           <h1 className="text-5xl md:text-7xl font-bold mb-4">
             <span className="bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent">
-              Hi, I'm
+              {t("Hola, soy", "Hi, I'm")}
             </span>
             <br />
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+            <span className="rainbow-text animate-gradient">
               Aldair
             </span>
           </h1>
 
           {/* Role */}
           <p className="text-xl md:text-2xl text-gray-400 mb-6 font-light">
-            Building digital experiences with modern technology
+            {t("Creando experiencias digitales con tecnología moderna", "Building digital experiences with modern technology")}
           </p>
 
           {/* Description */}
           <p className="text-gray-500 mb-8 max-w-md">
-            Full-stack developer focused on scalable applications, 
-            clean code, and exceptional user experiences.
+            {t(
+              "Desarrollador full-stack enfocado en aplicaciones escalables, código limpio y experiencias de usuario excepcionales.",
+              "Full-stack developer focused on scalable applications, clean code, and exceptional user experiences."
+            )}
           </p>
 
           {/* Stats */}
           <div className="flex justify-center lg:justify-start gap-8 mb-8">
             <div className="text-center">
               <div className="text-3xl font-bold text-white">5+</div>
-              <div className="text-sm text-gray-500">Years Exp</div>
+              <div className="text-sm text-gray-500">{t("Años Exp", "Years Exp")}</div>
             </div>
             <div className="w-px bg-gray-700/50" />
             <div className="text-center">
               <div className="text-3xl font-bold text-white">20+</div>
-              <div className="text-sm text-gray-500">Projects</div>
+              <div className="text-sm text-gray-500">{t("Proyectos", "Projects")}</div>
             </div>
             <div className="w-px bg-gray-700/50" />
             <div className="text-center">
               <div className="text-3xl font-bold text-white">10+</div>
-              <div className="text-sm text-gray-500">Clients</div>
+              <div className="text-sm text-gray-500">{t("Clientes", "Clients")}</div>
             </div>
           </div>
 
           {/* CTA */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-xl hover:scale-105 transition shadow-lg shadow-cyan-500/25">
-              View Projects
+              {t("Ver Proyectos", "View Projects")}
             </button>
             <button className="px-8 py-4 bg-gray-800/50 border border-gray-600/50 text-white font-semibold rounded-xl hover:bg-gray-700/50 transition">
-              Contact Me
+              {t("Contáctame", "Contact Me")}
             </button>
           </div>
         </div>
@@ -164,11 +181,11 @@ export default function Hero() {
                   <div className="pl-4"><span className="text-gray-400">name:</span> <span className="text-yellow-300">"Aldair"</span>;</div>
                   <div className="pl-4"><span className="text-gray-400">role:</span> <span className="text-yellow-300">"Full-Stack"</span>;</div>
                   <div className="pl-4"><span className="text-gray-400">skills:</span> <span className="text-yellow-300">[</span><span className="text-orange-300">React</span><span className="text-gray-400">,</span> <span className="text-orange-300">Node</span><span className="text-gray-400">,</span> <span className="text-orange-300">TS</span><span className="text-yellow-300">]</span>;</div>
-                  <div className="pl-4"><span className="text-gray-400">experience:</span> <span className="text-blue-300">5</span><span className="text-gray-400">+ years</span></div>
+                  <div className="pl-4"><span className="text-gray-400">experience:</span> <span className="text-blue-300">5</span><span className="text-gray-400">{t("+ años", "+ years")}</span></div>
                   <div className="pl-4"><span className="text-gray-400">available:</span> <span className="text-green-400">true</span>;</div>
                   <div>{"}"}</div>
                   <div className="h-3" />
-                  <div><span className="text-gray-500">// Projects delivered</span></div>
+                  <div><span className="text-gray-500">{t("// Proyectos entregados", "// Projects delivered")}</span></div>
                   <div><span className="text-purple-400">const</span> <span className="text-cyan-400">projects</span> = <span className="text-purple-400">new</span> <span className="text-cyan-400">Portfolio</span>();</div>
                   <div><span className="text-cyan-400">projects</span>.<span className="text-blue-400">build</span>();</div>
                   <div><span className="text-green-400">await</span> <span className="text-cyan-400">deliver</span>(<span className="text-yellow-300">"excellence"</span>);</div>
@@ -181,11 +198,40 @@ export default function Hero() {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
-        <span className="text-gray-500 text-sm mb-3">Scroll to explore</span>
+        <span className="text-gray-500 text-sm mb-3">{t("Explora", "Scroll to explore")}</span>
         <div className="w-7 h-12 border-2 border-gray-600/50 rounded-full flex justify-center pt-2">
           <div className="w-1.5 h-3 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full animate-bounce" />
         </div>
       </div>
+
+      {/* Rainbow Animation Styles */}
+      <style>{`
+        @keyframes rainbow {
+          0% { color: #ff0000; }
+          14% { color: #ff7f00; }
+          28% { color: #ffff00; }
+          42% { color: #00ff00; }
+          57% { color: #0000ff; }
+          71% { color: #4b0082; }
+          85% { color: #9400d3; }
+          100% { color: #ff0000; }
+        }
+        
+        @keyframes rainbow-bg {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        
+        .rainbow-text {
+          background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+          background-size: 400% 400%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: rainbow-bg 3s ease infinite;
+        }
+      `}</style>
     </section>
   );
 }
