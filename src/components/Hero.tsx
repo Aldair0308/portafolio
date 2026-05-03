@@ -43,30 +43,43 @@ export default function Hero() {
         backgroundSize: '60px 60px'
       }}/>
 
-      {/* Dynamic mouse glow */}
-      <div className="absolute inset-0 transition-all duration-75 ease-out pointer-events-none" style={{
+      {/* Dynamic mouse glow - Water effect */}
+      <div className="absolute inset-0 transition-all duration-100 ease-out pointer-events-none" style={{
         background: `
-          radial-gradient(600px circle at ${mousePos.x}% ${mousePos.y}%, rgba(6,182,212,0.15) 0%, transparent 50%),
-          radial-gradient(500px circle at ${100 - mousePos.x}% ${100 - mousePos.y}%, rgba(139,92,246,0.12) 0%, transparent 50%)
+          radial-gradient(800px circle at ${mousePos.x}% ${mousePos.y}%, rgba(0,190,220,0.25) 0%, rgba(0,150,200,0.1) 30%, transparent 60%),
+          radial-gradient(600px circle at ${100 - mousePos.x}% ${100 - mousePos.y}%, rgba(0,100,150,0.15) 0%, rgba(0,70,120,0.05) 40%, transparent 70%)
         `
       }}/>
 
-      {/* Ripple effects */}
+      {/* Water ripple effects with light reflections */}
       {ripples.map((ripple) => (
-        <div key={ripple.id} className="absolute rounded-full pointer-events-none animate-ping" style={{
-          left: ripple.x, top: ripple.y, width: 80, height: 80,
+        <div key={ripple.id} className="absolute rounded-full pointer-events-none" style={{
+          left: ripple.x, top: ripple.y, width: 120, height: 120,
           transform: 'translate(-50%, -50%)',
-          background: 'radial-gradient(circle, rgba(6,182,212,0.6) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(0,190,220,0.3) 20%, rgba(0,150,200,0.1) 50%, transparent 70%)',
+          animation: 'waterRipple 1s ease-out forwards',
         }} />
       ))}
 
+      {/* Main water glow with caustic light */}
       <div style={{
         left: `${mousePos.x}%`, top: `${mousePos.y}%`,
         transform: 'translate(-50%, -50%)',
-        width: '500px', height: '500px',
-        background: 'radial-gradient(circle, rgba(6,182,212,0.2) 0%, rgba(6,182,212,0.05) 40%, transparent 70%)',
-        filter: 'blur(50px)',
-      }} className="absolute pointer-events-none transition-all duration-75 ease-out" />
+        width: '600px', height: '600px',
+        background: 'radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(0,210,255,0.15) 25%, rgba(0,150,200,0.08) 50%, rgba(0,100,150,0.03) 75%, transparent 100%)',
+        filter: 'blur(40px)',
+      }} className="absolute pointer-events-none transition-all duration-100 ease-out" />
+
+      {/* Water caustic pattern overlay */}
+      <div className="absolute inset-0 pointer-events-none opacity-20" style={{
+        background: `
+          radial-gradient(ellipse at 20% 30%, rgba(255,255,255,0.3) 0%, transparent 50%),
+          radial-gradient(ellipse at 80% 70%, rgba(255,255,255,0.2) 0%, transparent 40%),
+          radial-gradient(ellipse at 60% 20%, rgba(0,200,255,0.2) 0%, transparent 30%),
+          radial-gradient(ellipse at 40% 80%, rgba(0,180,230,0.15) 0%, transparent 35%)
+        `,
+        animation: 'causticMove 8s ease-in-out infinite',
+      }}/>
 
       {/* Main Content */}
       <div className="relative z-10 flex flex-col lg:flex-row items-center justify-center min-h-screen px-4 md:px-12 gap-8 lg:gap-16">
@@ -266,6 +279,36 @@ export default function Hero() {
           50% {
             opacity: 0.9;
             transform: translateX(5px);
+          }
+        }
+        
+        @keyframes waterRipple {
+          0% {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 1;
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(2);
+            opacity: 0;
+          }
+        }
+        
+        @keyframes causticMove {
+          0%, 100% {
+            transform: translate(0, 0) scale(1);
+            opacity: 0.2;
+          }
+          25% {
+            transform: translate(20px, -15px) scale(1.1);
+            opacity: 0.25;
+          }
+          50% {
+            transform: translate(-10px, 20px) scale(0.95);
+            opacity: 0.15;
+          }
+          75% {
+            transform: translate(-25px, -10px) scale(1.05);
+            opacity: 0.2;
           }
         }
       `}</style>
