@@ -19,85 +19,81 @@ export default function ThemeSelector() {
   const { theme, themes, setTheme } = useTheme();
   const { language, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-  const [previewTheme, setPreviewTheme] = useState<string | null>(null);
+  const [selectedTheme, setSelectedTheme] = useState<string | null>(null);
 
-  const displayTheme = previewTheme 
-    ? themes.find(th => th.id === previewTheme) || theme 
-    : theme;
+  const currentSelected = selectedTheme || theme.id;
+  const displayTheme = themes.find(th => th.id === currentSelected) || theme;
 
-  const handleSelect = (id: string) => {
+  const handleThemeClick = (id: string) => {
+    setSelectedTheme(id);
     setTheme(id);
-    setPreviewTheme(null);
+  };
+
+  const handleClose = () => {
     setIsOpen(false);
+    setSelectedTheme(null);
   };
 
   return (
     <div className="fixed top-4 right-4 z-50">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl transition-all ${displayTheme.colors.card} ${displayTheme.colors.border} border`}
+        className="flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl transition-all bg-slate-800/90 border border-slate-700/50"
       >
         <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${themePreviewStyles[displayTheme.id]}`} />
-        <span className={`text-sm font-medium ${displayTheme.colors.text}`}>
+        <span className="text-sm font-medium text-gray-200">
           {language === "es" ? displayTheme.name : displayTheme.nameEn}
         </span>
-        <svg className={`w-4 h-4 ${displayTheme.colors.textSecondary} transition-transform ${isOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className={`w-4 h-4 text-gray-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
       </button>
 
       {isOpen && (
-        <div className={`absolute top-full right-0 mt-2 w-72 p-3 rounded-2xl backdrop-blur-xl ${displayTheme.colors.card} ${displayTheme.colors.border} border shadow-2xl`}>
-          <div className={`text-xs font-medium ${displayTheme.colors.textMuted} mb-3 uppercase tracking-wider`}>
-            {t("Seleccionar tema", "Select theme")}
-          </div>
-          
-          <div className="grid grid-cols-2 gap-2">
-            {themes.map((th) => (
-              <button
-                key={th.id}
-                onClick={() => setPreviewTheme(th.id)}
-                onMouseLeave={() => setPreviewTheme(null)}
-                className={`relative p-2 rounded-xl transition-all ${
-                  theme.id === th.id 
-                    ? `${th.colors.card} ring-2 ring-white/30` 
-                    : `${th.colors.backgroundSecondary} hover:${th.colors.backgroundTertiary}`
-                }`}
-              >
-                <div className={`w-full h-12 rounded-lg bg-gradient-to-br ${themePreviewStyles[th.id]} mb-2`} />
-                <div className={`text-xs font-medium ${th.colors.text}`}>
-                  {language === "es" ? th.name : th.nameEn}
-                </div>
-                {theme.id === th.id && (
-                  <div className="absolute top-2 right-2">
-                    <svg className={`w-4 h-4 ${th.colors.accent}`} fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
+        <>
+          <div className="absolute top-full right-0 mt-2 w-72 p-3 rounded-2xl backdrop-blur-xl bg-slate-900/95 border border-slate-700/50 shadow-2xl">
+            <div className="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">
+              {t("Seleccionar tema", "Select theme")}
+            </div>
+            
+            <div className="grid grid-cols-2 gap-2">
+              {themes.map((th) => (
+                <button
+                  key={th.id}
+                  onClick={() => handleThemeClick(th.id)}
+                  className={`relative p-2 rounded-xl transition-all ${
+                    currentSelected === th.id 
+                      ? "bg-slate-700 ring-2 ring-cyan-500/50" 
+                      : "bg-slate-800/50 hover:bg-slate-700/50"
+                  }`}
+                >
+                  <div className={`w-full h-12 rounded-lg bg-gradient-to-br ${themePreviewStyles[th.id]} mb-2`} />
+                  <div className="text-xs font-medium text-gray-200">
+                    {language === "es" ? th.name : th.nameEn}
                   </div>
-                )}
+                  {currentSelected === th.id && (
+                    <div className="absolute top-2 right-2">
+                      <svg className="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  )}
+                </button>
+              ))}
+            </div>
+            
+            <div className="mt-3 pt-3 border-t border-slate-700/50">
+              <button
+                onClick={handleClose}
+                className="w-full px-3 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-cyan-500 to-blue-500 text-white"
+              >
+                {t("Listo", "Done")}
               </button>
-            ))}
+            </div>
           </div>
           
-          <div className="flex gap-2 mt-3 pt-3 border-t border-white/10">
-            <button
-              onClick={() => setIsOpen(false)}
-              className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium ${displayTheme.colors.textSecondary} hover:${displayTheme.colors.text} transition`}
-            >
-              {t("Cancelar", "Cancel")}
-            </button>
-            <button
-              onClick={() => handleSelect(theme.id)}
-              className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium bg-gradient-to-r ${themePreviewStyles[theme.id]} text-white`}
-            >
-              {t("Aplicar", "Apply")}
-            </button>
-          </div>
-        </div>
-      )}
-
-      {isOpen && (
-        <div className="fixed inset-0 -z-10" onClick={() => setIsOpen(false)} />
+          <div className="fixed inset-0 -z-10" onClick={handleClose} />
+        </>
       )}
     </div>
   );
