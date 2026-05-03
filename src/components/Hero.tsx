@@ -1,8 +1,25 @@
 import { useEffect, useState, useCallback } from "react";
 import { useLanguage } from "../LanguageContext";
+import { useTheme } from "../ThemeContext";
+
+const themeGlowColors: Record<string, string> = {
+  ocean: "rgba(0,190,220,",
+  sunset: "rgba(249,115,22,",
+  forest: "rgba(16,185,129,",
+  violet: "rgba(139,92,246,",
+  rose: "rgba(236,72,153,",
+  amber: "rgba(245,158,11,",
+  teal: "rgba(20,184,166,",
+  slate: "rgba(161,161,170,",
+  lava: "rgba(239,68,68,",
+  frost: "rgba(14,165,233,"
+};
 
 export default function Hero() {
   const { language, setLanguage, t } = useLanguage();
+  const { theme } = useTheme();
+  const glowColor = themeGlowColors[theme.id] || themeGlowColors.ocean;
+  
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const [ripples, setRipples] = useState<Array<{ x: number; y: number; id: number }>>([]);
 
@@ -34,7 +51,7 @@ export default function Hero() {
   return (
     <section className="min-h-screen relative overflow-hidden">
       {/* Base background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-slate-950 to-gray-900" />
+      <div className={`absolute inset-0 bg-gradient-to-br ${theme.colors.background}`} />
 
       {/* Subtle grid */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -46,8 +63,8 @@ export default function Hero() {
       {/* Dynamic mouse glow - Water effect */}
       <div className="absolute inset-0 transition-all duration-100 ease-out pointer-events-none" style={{
         background: `
-          radial-gradient(800px circle at ${mousePos.x}% ${mousePos.y}%, rgba(0,190,220,0.25) 0%, rgba(0,150,200,0.1) 30%, transparent 60%),
-          radial-gradient(600px circle at ${100 - mousePos.x}% ${100 - mousePos.y}%, rgba(0,100,150,0.15) 0%, rgba(0,70,120,0.05) 40%, transparent 70%)
+          radial-gradient(800px circle at ${mousePos.x}% ${mousePos.y}%, ${glowColor}0.25) 0%, ${glowColor}0.1) 30%, transparent 60%),
+          radial-gradient(600px circle at ${100 - mousePos.x}% ${100 - mousePos.y}%, ${glowColor}0.15) 0%, ${glowColor}0.05) 40%, transparent 70%)
         `
       }}/>
 
@@ -56,7 +73,7 @@ export default function Hero() {
         <div key={ripple.id} className="absolute rounded-full pointer-events-none" style={{
           left: ripple.x, top: ripple.y, width: 120, height: 120,
           transform: 'translate(-50%, -50%)',
-          background: 'radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(0,190,220,0.3) 20%, rgba(0,150,200,0.1) 50%, transparent 70%)',
+          background: `radial-gradient(circle, rgba(255,255,255,0.4) 0%, ${glowColor}0.3) 20%, ${glowColor}0.1) 50%, transparent 70%)`,
           animation: 'waterRipple 1s ease-out forwards',
         }} />
       ))}
@@ -66,7 +83,7 @@ export default function Hero() {
         left: `${mousePos.x}%`, top: `${mousePos.y}%`,
         transform: 'translate(-50%, -50%)',
         width: '600px', height: '600px',
-        background: 'radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(0,210,255,0.15) 25%, rgba(0,150,200,0.08) 50%, rgba(0,100,150,0.03) 75%, transparent 100%)',
+        background: `radial-gradient(circle, rgba(255,255,255,0.25) 0%, ${glowColor}0.15) 25%, ${glowColor}0.08) 50%, ${glowColor}0.03) 75%, transparent 100%)`,
         filter: 'blur(40px)',
       }} className="absolute pointer-events-none transition-all duration-100 ease-out" />
 
@@ -90,13 +107,13 @@ export default function Hero() {
           <div className="mb-4 flex justify-center lg:justify-start gap-2">
             <button 
               onClick={() => setLanguage("es")}
-              className={`px-3 py-1 rounded-full text-sm font-medium transition ${language === "es" ? "bg-cyan-500 text-black" : "bg-gray-800 text-gray-400 hover:text-white"}`}
+              className={`px-3 py-1 rounded-full text-sm font-medium transition ${language === "es" ? "bg-cyan-500 text-black" : "bg-slate-800 text-gray-400"}`}
             >
               ES
             </button>
             <button 
               onClick={() => setLanguage("en")}
-              className={`px-3 py-1 rounded-full text-sm font-medium transition ${language === "en" ? "bg-cyan-500 text-black" : "bg-gray-800 text-gray-400 hover:text-white"}`}
+              className={`px-3 py-1 rounded-full text-sm font-medium transition ${language === "en" ? "bg-cyan-500 text-black" : "bg-slate-800 text-gray-400"}`}
             >
               EN
             </button>
@@ -126,7 +143,7 @@ export default function Hero() {
           </p>
 
           {/* Description */}
-          <p className="text-gray-500 mb-8 max-w-md">
+          <p className={`${theme.colors.textMuted} mb-8 max-w-md`}>
             {t(
               "Desarrollador full-stack enfocado en aplicaciones escalables, código limpio y experiencias de usuario excepcionales.",
               "Full-stack developer focused on scalable applications, clean code, and exceptional user experiences."
@@ -136,27 +153,27 @@ export default function Hero() {
           {/* Stats */}
           <div className="flex justify-center lg:justify-start gap-8 mb-8">
             <div className="text-center">
-              <div className="text-3xl font-bold text-white">5+</div>
-              <div className="text-sm text-gray-500">{t("Años Exp", "Years Exp")}</div>
+              <div className={`text-3xl font-bold ${theme.colors.text}`}>5+</div>
+              <div className={`text-sm ${theme.colors.textMuted}`}>{t("Años Exp", "Years Exp")}</div>
             </div>
-            <div className="w-px bg-gray-700/50" />
+            <div className={`w-px ${theme.colors.border.split('/')[0]}/30`} />
             <div className="text-center">
-              <div className="text-3xl font-bold text-white">20+</div>
-              <div className="text-sm text-gray-500">{t("Proyectos", "Projects")}</div>
+              <div className={`text-3xl font-bold ${theme.colors.text}`}>20+</div>
+              <div className={`text-sm ${theme.colors.textMuted}`}>{t("Proyectos", "Projects")}</div>
             </div>
-            <div className="w-px bg-gray-700/50" />
+            <div className={`w-px ${theme.colors.border.split('/')[0]}/30`} />
             <div className="text-center">
-              <div className="text-3xl font-bold text-white">10+</div>
-              <div className="text-sm text-gray-500">{t("Clientes", "Clients")}</div>
+              <div className={`text-3xl font-bold ${theme.colors.text}`}>10+</div>
+              <div className={`text-sm ${theme.colors.textMuted}`}>{t("Clientes", "Clients")}</div>
             </div>
           </div>
 
           {/* CTA */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-xl hover:scale-105 transition shadow-lg shadow-cyan-500/25">
+            <button className={`px-8 py-4 bg-gradient-to-r ${theme.colors.gradient} text-white font-semibold rounded-xl hover:scale-105 transition shadow-lg`}>
               {t("Ver Proyectos", "View Projects")}
             </button>
-            <button className="px-8 py-4 bg-gray-800/50 border border-gray-600/50 text-white font-semibold rounded-xl hover:bg-gray-700/50 transition">
+            <button className={`px-8 py-4 ${theme.colors.backgroundSecondary} border ${theme.colors.border} ${theme.colors.text} font-semibold rounded-xl hover:${theme.colors.backgroundTertiary} transition`}>
               {t("Contáctame", "Contact Me")}
             </button>
           </div>
@@ -164,10 +181,10 @@ export default function Hero() {
 
         {/* RIGHT COLUMN - Code Editor */}
         <div className="w-full lg:w-1/2 max-w-xl order-1 lg:order-2">
-          <div className="relative -inset-4 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 rounded-2xl blur-xl" />
+          <div className={`relative -inset-4 bg-gradient-to-r ${theme.colors.gradient}/20 rounded-2xl blur-xl`} />
           
           <div className="relative bg-gray-900/95 backdrop-blur-xl rounded-xl border border-gray-700/60 overflow-hidden shadow-2xl">
-            <div className="flex items-center justify-between px-4 py-3 bg-gray-800/80 border-b border-gray-700/50">
+            <div className={`flex items-center justify-between px-4 py-3 ${theme.colors.backgroundSecondary} border-b ${theme.colors.border}`}>
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-red-500/80" />
                 <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
@@ -175,7 +192,7 @@ export default function Hero() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-gray-500 text-xs font-mono">portfolio.ts</span>
-                <span className="ml-3 px-2 py-0.5 bg-blue-500/20 text-blue-400 text-xs rounded">TypeScript</span>
+                <span className={`ml-3 px-2 py-0.5 bg-${theme.colors.accent}-500/20 text-${theme.colors.accent}-400 text-xs rounded`}>TypeScript</span>
               </div>
             </div>
 
@@ -186,7 +203,7 @@ export default function Hero() {
                   <div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div>
                 </div>
                 <div className="pl-3 space-y-1">
-                  <div><span className="text-purple-400">interface</span> <span className="text-cyan-400">Developer</span> {"{"}</div>
+                  <div><span className="text-purple-400">interface</span> <span className={`text-${theme.colors.accent}-400`}>Developer</span> {"{"}</div>
                   <div className="pl-4"><span className="text-gray-400">name:</span> <span className="text-yellow-300">"Aldair"</span>;</div>
                   <div className="pl-4"><span className="text-gray-400">role:</span> <span className="text-yellow-300">"Full-Stack"</span>;</div>
                   <div className="pl-4"><span className="text-gray-400">skills:</span> <span className="text-yellow-300">[</span><span className="text-orange-300">React</span><span className="text-gray-400">,</span> <span className="text-orange-300">Node</span><span className="text-gray-400">,</span> <span className="text-orange-300">TS</span><span className="text-yellow-300">]</span>;</div>
@@ -195,9 +212,9 @@ export default function Hero() {
                   <div>{"}"}</div>
                   <div className="h-3" />
                   <div><span className="text-gray-500">{t("// Proyectos entregados", "// Projects delivered")}</span></div>
-                  <div><span className="text-purple-400">const</span> <span className="text-cyan-400">projects</span> = <span className="text-purple-400">new</span> <span className="text-cyan-400">Portfolio</span>();</div>
-                  <div><span className="text-cyan-400">projects</span>.<span className="text-blue-400">build</span>();</div>
-                  <div><span className="text-green-400">await</span> <span className="text-cyan-400">deliver</span>(<span className="text-yellow-300">"excellence"</span>);</div>
+                  <div><span className="text-purple-400">const</span> <span className={`text-${theme.colors.accent}-400`}>projects</span> = <span className="text-purple-400">new</span> <span className={`text-${theme.colors.accent}-400`}>Portfolio</span>();</div>
+                  <div><span className={`text-${theme.colors.accent}-400`}>projects</span>.<span className="text-blue-400">build</span>();</div>
+                  <div><span className="text-green-400">await</span> <span className={`text-${theme.colors.accent}-400`}>deliver</span>(<span className="text-yellow-300">"excellence"</span>);</div>
                 </div>
               </div>
             </div>
@@ -207,9 +224,9 @@ export default function Hero() {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
-        <span className="text-gray-500 text-sm mb-3">{t("Explora", "Scroll to explore")}</span>
-        <div className="w-7 h-12 border-2 border-gray-600/50 rounded-full flex justify-center pt-2">
-          <div className="w-1.5 h-3 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full animate-bounce" />
+        <span className={`${theme.colors.textMuted} text-sm mb-3`}>{t("Explora", "Scroll to explore")}</span>
+        <div className={`w-7 h-12 border-2 border-gray-600/50 rounded-full flex justify-center pt-2`}>
+          <div className={`w-1.5 h-3 bg-gradient-to-b ${theme.colors.gradient} rounded-full animate-bounce`} />
         </div>
       </div>
 
