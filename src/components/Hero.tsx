@@ -96,13 +96,13 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* Name with Water Effect */}
+          {/* Rainbow Effect Name */}
           <h1 className="text-5xl md:text-7xl font-bold mb-4">
             <span className="bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent">
               {t("Hola, soy", "Hi, I'm")}
             </span>
             <br />
-            <span className="water-text">
+            <span className="rainbow-text">
               Aldair
             </span>
           </h1>
@@ -200,98 +200,58 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Water Effect Styles */}
+      {/* Rainbow Effect Styles */}
       <style>{`
-        .water-text {
-          position: relative;
-          display: inline-block;
-          background: linear-gradient(180deg, 
-            #00d4ff 0%, 
-            #0099cc 20%, 
-            #006699 40%, 
-            #003366 60%,
-            #001a33 80%,
-            #000d1a 100%);
+        .rainbow-text {
+          background: linear-gradient(90deg, 
+            #ff6b6b 0%, 
+            #feca57 17%, 
+            #48dbfb 33%, 
+            #1dd1a1 50%, 
+            #5f27cd 67%, 
+            #ff6b6b 83%, 
+            #feca57 100%);
           background-size: 200% 200%;
           -webkit-background-clip: text;
           background-clip: text;
           -webkit-text-fill-color: transparent;
-          animation: water-flow 3s ease-in-out infinite;
-          text-shadow: 0 0 30px rgba(0, 212, 255, 0.5),
-                       0 0 60px rgba(0, 212, 255, 0.3),
-                       0 0 90px rgba(0, 212, 255, 0.1);
+          animation: rainbow-flow 3s ease-in-out infinite;
         }
         
-        .water-text::before {
+        .rainbow-text::before {
           content: 'Aldair';
           position: absolute;
           top: 0;
           left: 0;
-          background: linear-gradient(180deg,
-            rgba(255,255,255,0.8) 0%,
-            rgba(255,255,255,0.4) 30%,
-            transparent 50%,
-            rgba(0,150,200,0.3) 70%,
-            rgba(0,100,150,0.5) 100%);
-          background-size: 100% 200%;
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: water-shine 2s ease-in-out infinite;
-          filter: blur(1px);
-        }
-        
-        .water-text::after {
-          content: 'Aldair';
-          position: absolute;
-          top: 0;
-          left: 0;
-          background: linear-gradient(90deg,
-            transparent 0%,
-            rgba(255,255,255,0.3) 25%,
-            rgba(255,255,255,0.6) 50%,
-            rgba(255,255,255,0.3) 75%,
-            transparent 100%);
+          background: linear-gradient(90deg, 
+            rgba(255,255,255,0.9) 0%, 
+            rgba(255,255,255,0.7) 20%, 
+            rgba(255,255,255,0.5) 40%, 
+            rgba(255,255,255,0.7) 60%, 
+            rgba(255,255,255,0.9) 100%);
           background-size: 200% 100%;
           -webkit-background-clip: text;
           background-clip: text;
           -webkit-text-fill-color: transparent;
-          animation: water-caustic 4s ease-in-out infinite;
-          filter: blur(2px);
+          animation: rainbow-shine 2s ease-in-out infinite;
+          filter: blur(0.5px);
         }
         
-        @keyframes water-flow {
+        @keyframes rainbow-flow {
           0%, 100% {
-            background-position: 0% 0%;
-          }
-          25% {
-            background-position: 50% 25%;
+            background-position: 0% 50%;
           }
           50% {
             background-position: 100% 50%;
           }
-          75% {
-            background-position: 50% 75%;
-          }
         }
         
-        @keyframes water-shine {
+        @keyframes rainbow-shine {
           0%, 100% {
-            opacity: 0.3;
-            transform: translateY(0);
+            opacity: 0.5;
           }
           50% {
-            opacity: 0.6;
-            transform: translateY(-2px);
-          }
-        }
-        
-        @keyframes water-caustic {
-          0%, 100% {
-            background-position: 200% 0%;
-          }
-          50% {
-            background-position: 0% 0%;
+            opacity: 1;
           }
         }
       `}</style>
