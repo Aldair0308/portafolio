@@ -66,11 +66,11 @@ Error generating stack: `+i.message+`
           top: 0;
           left: 0;
           background: linear-gradient(90deg, 
-            rgba(255,255,255,0.9) 0%, 
-            rgba(255,255,255,0.7) 20%, 
-            rgba(255,255,255,0.5) 40%, 
-            rgba(255,255,255,0.7) 60%, 
-            rgba(255,255,255,0.9) 100%);
+            rgba(255,255,0,0.9) 0%, 
+            rgba(255,255,0,0.7) 20%, 
+            rgba(255,255,0,0.5) 40%, 
+            rgba(255,255,0,0.7) 60%, 
+            rgba(255,255,0,0.9) 100%);
           background-size: 200% 100%;
           -webkit-background-clip: text;
           background-clip: text;
