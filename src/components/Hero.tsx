@@ -51,7 +51,7 @@ export default function Hero() {
         `
       }}/>
 
-      {/* Ripple */}
+      {/* Ripple effects */}
       {ripples.map((ripple) => (
         <div key={ripple.id} className="absolute rounded-full pointer-events-none animate-ping" style={{
           left: ripple.x, top: ripple.y, width: 80, height: 80,
@@ -68,7 +68,7 @@ export default function Hero() {
         filter: 'blur(50px)',
       }} className="absolute pointer-events-none transition-all duration-75 ease-out" />
 
-      {/* Main Content - Two Columns: INFO LEFT, CODE RIGHT */}
+      {/* Main Content */}
       <div className="relative z-10 flex flex-col lg:flex-row items-center justify-center min-h-screen px-4 md:px-12 gap-8 lg:gap-16">
         
         {/* LEFT COLUMN - INFO */}
@@ -96,13 +96,13 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* Name with Rainbow Animation */}
+          {/* Name with Water Effect */}
           <h1 className="text-5xl md:text-7xl font-bold mb-4">
             <span className="bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent">
               {t("Hola, soy", "Hi, I'm")}
             </span>
             <br />
-            <span className="rainbow-text animate-gradient">
+            <span className="water-text">
               Aldair
             </span>
           </h1>
@@ -151,12 +151,9 @@ export default function Hero() {
 
         {/* RIGHT COLUMN - Code Editor */}
         <div className="w-full lg:w-1/2 max-w-xl order-1 lg:order-2">
-          {/* Glow behind editor */}
           <div className="relative -inset-4 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 rounded-2xl blur-xl" />
           
-          {/* Editor */}
           <div className="relative bg-gray-900/95 backdrop-blur-xl rounded-xl border border-gray-700/60 overflow-hidden shadow-2xl">
-            {/* Title Bar */}
             <div className="flex items-center justify-between px-4 py-3 bg-gray-800/80 border-b border-gray-700/50">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-red-500/80" />
@@ -169,7 +166,6 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Code */}
             <div className="p-5 font-mono text-sm md:text-base overflow-x-auto">
               <div className="flex">
                 <div className="text-gray-600/50 mr-4 text-right select-none pr-3 border-r border-gray-800/50">
@@ -204,32 +200,99 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Rainbow Animation Styles */}
+      {/* Water Effect Styles */}
       <style>{`
-        @keyframes rainbow {
-          0% { color: #ff0000; }
-          14% { color: #ff7f00; }
-          28% { color: #ffff00; }
-          42% { color: #00ff00; }
-          57% { color: #0000ff; }
-          71% { color: #4b0082; }
-          85% { color: #9400d3; }
-          100% { color: #ff0000; }
-        }
-        
-        @keyframes rainbow-bg {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        
-        .rainbow-text {
-          background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
-          background-size: 400% 400%;
+        .water-text {
+          position: relative;
+          display: inline-block;
+          background: linear-gradient(180deg, 
+            #00d4ff 0%, 
+            #0099cc 20%, 
+            #006699 40%, 
+            #003366 60%,
+            #001a33 80%,
+            #000d1a 100%);
+          background-size: 200% 200%;
           -webkit-background-clip: text;
           background-clip: text;
           -webkit-text-fill-color: transparent;
-          animation: rainbow-bg 3s ease infinite;
+          animation: water-flow 3s ease-in-out infinite;
+          text-shadow: 0 0 30px rgba(0, 212, 255, 0.5),
+                       0 0 60px rgba(0, 212, 255, 0.3),
+                       0 0 90px rgba(0, 212, 255, 0.1);
+        }
+        
+        .water-text::before {
+          content: 'Aldair';
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: linear-gradient(180deg,
+            rgba(255,255,255,0.8) 0%,
+            rgba(255,255,255,0.4) 30%,
+            transparent 50%,
+            rgba(0,150,200,0.3) 70%,
+            rgba(0,100,150,0.5) 100%);
+          background-size: 100% 200%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: water-shine 2s ease-in-out infinite;
+          filter: blur(1px);
+        }
+        
+        .water-text::after {
+          content: 'Aldair';
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255,255,255,0.3) 25%,
+            rgba(255,255,255,0.6) 50%,
+            rgba(255,255,255,0.3) 75%,
+            transparent 100%);
+          background-size: 200% 100%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: water-caustic 4s ease-in-out infinite;
+          filter: blur(2px);
+        }
+        
+        @keyframes water-flow {
+          0%, 100% {
+            background-position: 0% 0%;
+          }
+          25% {
+            background-position: 50% 25%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          75% {
+            background-position: 50% 75%;
+          }
+        }
+        
+        @keyframes water-shine {
+          0%, 100% {
+            opacity: 0.3;
+            transform: translateY(0);
+          }
+          50% {
+            opacity: 0.6;
+            transform: translateY(-2px);
+          }
+        }
+        
+        @keyframes water-caustic {
+          0%, 100% {
+            background-position: 200% 0%;
+          }
+          50% {
+            background-position: 0% 0%;
+          }
         }
       `}</style>
     </section>
