@@ -9,9 +9,6 @@ export default function Skills() {
   const barsRef = useRef<HTMLDivElement>(null);
 
   const title = language === "es" ? "Habilidades" : "Skills";
-  const subtitle = language === "es" 
-    ? "Tecnologías que domino" 
-    : "Technologies I master";
 
   const skills = [
     { name: "React", level: 95, icon: "⚛️" },
@@ -37,33 +34,33 @@ export default function Skills() {
   }, [language, theme.id]);
 
   return (
-    <section className={`min-h-screen flex items-center justify-center px-4 py-20 ${theme.colors.backgroundSecondary}`}>
-      <div className="max-w-4xl w-full">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className={`inline-block px-4 py-1 rounded-full text-sm font-medium mb-4 bg-gradient-to-r ${theme.colors.gradient} text-white`}>
+    <section className={`min-h-screen flex items-center justify-center px-3 md:px-4 py-16 ${theme.colors.backgroundSecondary}`}>
+      <div className="max-w-lg md:max-w-4xl w-full">
+        {/* Section Header - Smaller for mobile */}
+        <div className="text-center mb-8 md:mb-12">
+          <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 bg-gradient-to-r ${theme.colors.gradient} text-white`}>
             {language === "es" ? "Especialidades" : "Expertise"}
           </div>
-          <h2 className={`text-5xl md:text-6xl font-bold ${theme.colors.text} mb-4`}>
+          <h2 className={`text-3xl md:text-4xl font-bold ${theme.colors.text} mb-2`}>
             {title}
           </h2>
-          <p className={`text-lg ${theme.colors.textMuted}`}>{subtitle}</p>
-          <div className={`w-24 h-1 mx-auto rounded-full bg-gradient-to-r ${theme.colors.gradient} mt-4`} />
+          <div className={`w-16 h-0.5 mx-auto rounded-full bg-gradient-to-r ${theme.colors.gradient} mt-3`} />
         </div>
         
-        <div ref={barsRef} className="space-y-6">
+        {/* Progress bars - Compact on mobile */}
+        <div ref={barsRef} className="space-y-3 md:space-y-4">
           {skills.map((skill, i) => (
-            <div key={i} className="space-y-2">
+            <div key={i} className="space-y-1">
               <div className="flex justify-between items-center">
-                <div className="flex items-center gap-3">
-                  <span className="text-xl">{skill.icon}</span>
-                  <span className={`font-medium ${theme.colors.text}`}>{skill.name}</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-base md:text-xl">{skill.icon}</span>
+                  <span className={`text-sm md:font-medium ${theme.colors.text}`}>{skill.name}</span>
                 </div>
-                <span className={`text-sm font-bold bg-gradient-to-r ${theme.colors.gradient} bg-clip-text text-transparent`}>
+                <span className={`text-xs md:text-sm font-bold bg-gradient-to-r ${theme.colors.gradient} bg-clip-text text-transparent`}>
                   {skill.level}%
                 </span>
               </div>
-              <div className={`h-3 rounded-full overflow-hidden ${theme.colors.backgroundTertiary}`}>
+              <div className={`h-2 md:h-3 rounded-full overflow-hidden ${theme.colors.backgroundTertiary}`}>
                 <div 
                   className={`bar-fill h-full bg-gradient-to-r ${theme.colors.gradient} rounded-full`} 
                   data-level={skill.level} 
@@ -74,16 +71,13 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Additional Skills Tags */}
-        <div className="mt-12">
-          <h3 className={`text-center text-lg font-medium mb-6 ${theme.colors.text}`}>
-            {language === "es" ? "También trabajo con" : "Also working with"}
-          </h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {["Next.js", "Redis", "Prisma", "TailwindCSS", "Figma", "Git", "CI/CD", "Microservices"].map((tech, i) => (
+        {/* Additional Skills - Smaller tags on mobile */}
+        <div className="mt-6 md:mt-8">
+          <div className="flex flex-wrap justify-center gap-1.5 md:gap-2">
+            {["Next.js", "Redis", "Prisma", "Tailwind", "Figma", "Git", "CI/CD"].map((tech, i) => (
               <span 
                 key={i} 
-                className={`px-4 py-2 rounded-full text-sm ${theme.colors.backgroundTertiary} ${theme.colors.textSecondary} border border-white/5`}
+                className={`px-2.5 md:px-3 py-1 rounded-full text-xs ${theme.colors.backgroundTertiary} ${theme.colors.textSecondary}`}
               >
                 {tech}
               </span>

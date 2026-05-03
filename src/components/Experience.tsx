@@ -6,106 +6,88 @@ export default function Experience() {
   const { theme } = useTheme();
   
   const title = language === "es" ? "Experiencia" : "Experience";
-  const subtitle = language === "es" 
-    ? "Mi trayectoria profesional" 
-    : "My professional journey";
+  const subtitle = language === "es" ? "Trayectoria" : "Journey";
 
   const experience = [
     {
-      role: language === "es" ? "Desarrollador Full-Stack" : "Full-Stack Developer",
+      role: language === "es" ? "Full-Stack Dev" : "Full-Stack Developer",
       company: "TechCo",
-      period: language === "es" ? "2021 - Hoy" : "2021 - Present",
-      desc: language === "es" 
-        ? "Arquitectura de microservicios, CI/CD, liderazgo de equipo de 5 desarrolladores" 
-        : "Microservices architecture, CI/CD, team leadership of 5 developers",
-      highlights: language === "es" 
-        ? ["AWS Lambda", "Kubernetes", "Team Lead"] 
-        : ["AWS Lambda", "Kubernetes", "Team Lead"]
+      period: "2021 - Hoy",
+      desc: language === "es" ? "Microservicios, CI/CD, Team Lead" : "Microservices, CI/CD, Team Lead",
+      highlights: ["AWS", "K8s", " Leadership"]
     },
     {
-      role: language === "es" ? "Desarrollador Frontend" : "Frontend Developer",
+      role: language === "es" ? "Frontend Dev" : "Frontend Developer",
       company: "Innovate Labs",
-      period: language === "es" ? "2019 - 2021" : "2019 - 2021",
-      desc: language === "es"
-        ? "SPA con React + Redux, optimización de rendimiento"
-        : "SPA with React + Redux, performance optimization",
-      highlights: language === "es" 
-        ? ["React", "Redux", "Performance"] 
-        : ["React", "Redux", "Performance"]
+      period: "2019 - 2021",
+      desc: language === "es" ? "SPA con React + Redux" : "SPA with React + Redux",
+      highlights: ["React", "Redux", "Perf"]
     },
     {
-      role: language === "es" ? "Desarrollador Junior" : "Junior Developer",
+      role: language === "es" ? "Junior Dev" : "Junior Developer",
       company: "StartUp XYZ",
-      period: language === "es" ? "2018 - 2019" : "2018 - 2019",
-      desc: language === "es"
-        ? "Desarrollo full-stack con Node.js y MongoDB"
-        : "Full-stack development with Node.js and MongoDB",
-      highlights: language === "es" 
-        ? ["Node.js", "MongoDB", "REST API"] 
-        : ["Node.js", "MongoDB", "REST API"]
+      period: "2018 - 2019",
+      desc: language === "es" ? "Full-stack Node.js" : "Full-stack Node.js",
+      highlights: ["Node", "Mongo", "API"]
     }
   ];
 
   return (
-    <section className={`min-h-screen flex items-center justify-center px-4 py-20 ${theme.colors.backgroundSecondary}`}>
-      <div className="max-w-4xl w-full">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className={`inline-block px-4 py-1 rounded-full text-sm font-medium mb-4 bg-gradient-to-r ${theme.colors.gradient} text-white`}>
-            {language === "es" ? "Trayectoria" : "Journey"}
+    <section className={`min-h-screen flex items-center justify-center px-3 md:px-4 py-16 ${theme.colors.backgroundSecondary}`}>
+      <div className="max-w-lg md:max-w-4xl w-full">
+        {/* Section Header - Smaller for mobile */}
+        <div className="text-center mb-8 md:mb-12">
+          <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 bg-gradient-to-r ${theme.colors.gradient} text-white`}>
+            {subtitle}
           </div>
-          <h2 className={`text-5xl md:text-6xl font-bold ${theme.colors.text} mb-4`}>
+          <h2 className={`text-3xl md:text-4xl font-bold ${theme.colors.text} mb-2`}>
             {title}
           </h2>
-          <p className={`text-lg ${theme.colors.textMuted}`}>{subtitle}</p>
-          <div className={`w-24 h-1 mx-auto rounded-full bg-gradient-to-r ${theme.colors.gradient} mt-4`} />
+          <div className={`w-16 h-0.5 mx-auto rounded-full bg-gradient-to-r ${theme.colors.gradient} mt-3`} />
         </div>
         
-        <div className="relative">
-          {/* Timeline line */}
-          <div className={`absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b ${theme.colors.gradient}`} />
+        <div className="relative pl-6 md:pl-0">
+          {/* Timeline line - Left aligned on mobile */}
+          <div className={`absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b ${theme.colors.gradient}`} />
           
-          <div className="space-y-12">
+          <div className="space-y-6 md:space-y-8">
             {experience.map((exp, i) => (
-              <div key={i} className={`relative flex items-center ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+              <div key={i} className="relative">
                 {/* Dot */}
-                <div className={`absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-gradient-to-r ${theme.colors.gradient} transform -translate-x-1/2 z-10`} />
+                <div className={`absolute left-2.5 md:left-1/2 w-3 h-3 md:w-4 md:h-4 rounded-full bg-gradient-to-r ${theme.colors.gradient} transform -translate-x-1/2 z-10`} />
                 
-                {/* Card */}
-                <div className={`ml-12 md:ml-0 md:w-[45%] p-6 rounded-2xl ${theme.colors.card} border ${theme.colors.border} hover:scale-105 transition-transform`}>
+                {/* Card - Simpler on mobile */}
+                <div className={`ml-6 md:ml-0 p-3 md:p-5 rounded-xl ${theme.colors.card} border ${theme.colors.border}`}>
                   {/* Period Badge */}
-                  <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 bg-gradient-to-r ${theme.colors.gradient} text-white`}>
+                  <div className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium mb-2 bg-gradient-to-r ${theme.colors.gradient} text-white`}>
                     {exp.period}
                   </div>
                   
                   {/* Role & Company */}
-                  <h3 className={`font-bold text-lg ${theme.colors.text}`}>
+                  <h3 className={`font-bold text-sm md:text-base ${theme.colors.text}`}>
                     {exp.role}
                   </h3>
-                  <p className={`text-sm mb-3 ${theme.colors.accent}-400`}>
+                  <p className={`text-xs md:text-sm mb-2 ${theme.colors.accent}-400`}>
                     @{exp.company}
                   </p>
                   
                   {/* Description */}
-                  <p className={`text-sm mb-4 ${theme.colors.textSecondary}`}>
+                  <p className={`text-xs md:text-sm mb-2 ${theme.colors.textSecondary}`}>
                     {exp.desc}
                   </p>
                   
-                  {/* Highlights */}
-                  <div className="flex flex-wrap gap-2">
+                  {/* Highlights - Smaller tags */}
+                  <div className="flex flex-wrap gap-1">
                     {exp.highlights.map((h, j) => (
                       <span 
                         key={j} 
-                        className={`px-2 py-1 rounded-md text-xs ${theme.colors.backgroundTertiary} ${theme.colors.textSecondary}`}
+                        className={`px-1.5 py-0.5 rounded text-xs ${theme.colors.backgroundTertiary} ${theme.colors.textSecondary}`}
                       >
                         {h}
                       </span>
                     ))}
                   </div>
                 </div>
-                
-                {/* Spacer for alternate layout */}
-                <div className="hidden md:block md:w-[10%]" />
               </div>
             ))}
           </div>

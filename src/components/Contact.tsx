@@ -21,120 +21,74 @@ export default function Contact() {
   ];
 
   return (
-    <section className={`min-h-screen flex items-center justify-center px-4 py-20 ${theme.colors.backgroundSecondary}`}>
-      <div className="max-w-4xl w-full">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className={`inline-block px-4 py-1 rounded-full text-sm font-medium mb-4 bg-gradient-to-r ${theme.colors.gradient} text-white`}>
+    <section className={`min-h-screen flex items-center justify-center px-3 md:px-4 py-16 ${theme.colors.backgroundSecondary}`}>
+      <div className="max-w-lg w-full">
+        {/* Section Header - Smaller for mobile */}
+        <div className="text-center mb-8 md:mb-12">
+          <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 bg-gradient-to-r ${theme.colors.gradient} text-white`}>
             {language === "es" ? "Hablemos" : "Let's Talk"}
           </div>
-          <h2 className={`text-5xl md:text-6xl font-bold ${theme.colors.text} mb-4`}>
+          <h2 className={`text-3xl md:text-4xl font-bold ${theme.colors.text} mb-2`}>
             {t("Contacto", "Contact")}
           </h2>
-          <p className={`text-lg ${theme.colors.textMuted}`}>
-            {language === "es" 
-              ? "¿Tienes un proyecto en mente? Hablemos." 
-              : "Have a project in mind? Let's talk."}
+          <p className={`text-sm md:text-lg ${theme.colors.textMuted}`}>
+            {language === "es" ? "¿Tienes un proyecto?" : "Have a project?"}
           </p>
-          <div className={`w-24 h-1 mx-auto rounded-full bg-gradient-to-r ${theme.colors.gradient} mt-4`} />
+          <div className={`w-16 h-0.5 mx-auto rounded-full bg-gradient-to-r ${theme.colors.gradient} mt-3`} />
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Contact Form */}
-          <div className={`p-8 rounded-2xl ${theme.colors.card} border ${theme.colors.border}`}>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className={`block text-sm font-medium mb-2 ${theme.colors.text}`}>
-                  {t("Nombre", "Name")}
-                </label>
-                <input
-                  type="text"
-                  required
-                  className={`w-full p-4 rounded-xl ${theme.colors.backgroundTertiary} ${theme.colors.text} focus:ring-2 focus:ring-cyan-500 outline-none transition`}
-                  placeholder={language === "es" ? "Tu nombre" : "Your name"}
-                />
-              </div>
-              <div>
-                <label className={`block text-sm font-medium mb-2 ${theme.colors.text}`}>
-                  {t("Correo", "Email")}
-                </label>
-                <input
-                  type="email"
-                  required
-                  className={`w-full p-4 rounded-xl ${theme.colors.backgroundTertiary} ${theme.colors.text} focus:ring-2 focus:ring-cyan-500 outline-none transition`}
-                  placeholder={language === "es" ? "tu@email.com" : "your@email.com"}
-                />
-              </div>
-              <div>
-                <label className={`block text-sm font-medium mb-2 ${theme.colors.text}`}>
-                  {t("Mensaje", "Message")}
-                </label>
-                <textarea
-                  rows={4}
-                  required
-                  className={`w-full p-4 rounded-xl ${theme.colors.backgroundTertiary} ${theme.colors.text} focus:ring-2 focus:ring-cyan-500 outline-none transition resize-none`}
-                  placeholder={language === "es" ? "Cuéntame sobre tu proyecto..." : "Tell me about your project..."}
-                />
-              </div>
-              <button
-                type="submit"
-                className={`w-full py-4 rounded-xl font-bold transition-all hover:scale-105 bg-gradient-to-r ${theme.colors.gradient} text-white shadow-lg hover:shadow-xl`}
-              >
-                {sent ? t("¡Mensaje enviado! 🎉", "Message sent! 🎉") : t("Enviar mensaje", "Send message")}
-              </button>
-            </form>
-          </div>
-          
-          {/* Contact Info */}
-          <div className="space-y-6">
-            {/* Social Links */}
-            <div className={`p-8 rounded-2xl ${theme.colors.card} border ${theme.colors.border}`}>
-              <h3 className={`text-xl font-bold mb-6 ${theme.colors.text}`}>
-                {language === "es" ? "Redes Sociales" : "Social Networks"}
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {socialLinks.slice(0, 4).map((social, i) => (
-                  <a
-                    key={i}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center gap-3 p-4 rounded-xl ${theme.colors.backgroundTertiary} hover:scale-105 transition-transform`}
-                  >
-                    <span className="text-2xl">{social.icon}</span>
-                    <span className={`font-medium ${theme.colors.text}`}>{social.name}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-            
-            {/* Availability */}
-            <div className={`p-8 rounded-2xl ${theme.colors.card} border ${theme.colors.border}`}>
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-4 h-4 rounded-full bg-green-500 animate-pulse" />
-                <span className={`font-medium ${theme.colors.text}`}>
-                  {language === "es" ? "Disponible para proyectos" : "Available for projects"}
-                </span>
-              </div>
-              <p className={`text-sm ${theme.colors.textSecondary}`}>
-                {language === "es" 
-                  ? "Actualmente accepting nuevos proyectos freelance y posiciones full-time." 
-                  : "Currently accepting new freelance projects and full-time positions."}
-              </p>
-            </div>
-            
-            {/* Resume Download */}
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              className={`flex items-center justify-center gap-3 p-4 rounded-xl font-medium bg-gradient-to-r ${theme.colors.gradient} text-white hover:scale-105 transition-transform`}
+        {/* Form - Compact on mobile */}
+        <div className={`p-4 md:p-6 rounded-xl ${theme.colors.card} border ${theme.colors.border} mb-4`}>
+          <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
+            <input
+              type="text"
+              required
+              className={`w-full p-3 md:p-4 rounded-lg ${theme.colors.backgroundTertiary} ${theme.colors.text} text-sm focus:ring-2 focus:ring-cyan-500 outline-none transition`}
+              placeholder={t("Nombre / Name", "Name")}
+            />
+            <input
+              type="email"
+              required
+              className={`w-full p-3 md:p-4 rounded-lg ${theme.colors.backgroundTertiary} ${theme.colors.text} text-sm focus:ring-2 focus:ring-cyan-500 outline-none transition`}
+              placeholder={t("Email", "Email")}
+            />
+            <textarea
+              rows={3}
+              required
+              className={`w-full p-3 md:p-4 rounded-lg ${theme.colors.backgroundTertiary} ${theme.colors.text} text-sm focus:ring-2 focus:ring-cyan-500 outline-none transition resize-none`}
+              placeholder={t("Mensaje", "Message")}
+            />
+            <button
+              type="submit"
+              className={`w-full py-3 md:py-4 rounded-lg font-bold text-sm md:text-base bg-gradient-to-r ${theme.colors.gradient} text-white`}
             >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              {t("Descargar CV", "Download CV")}
+              {sent ? "✓" : t("Enviar", "Send")}
+            </button>
+          </form>
+        </div>
+        
+        {/* Social Links - Grid 2x2 on mobile */}
+        <div className="grid grid-cols-2 gap-2 md:gap-3">
+          {socialLinks.map((social, i) => (
+            <a
+              key={i}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center justify-center gap-2 p-3 rounded-lg ${theme.colors.backgroundTertiary} ${theme.colors.text}`}
+            >
+              <span>{social.icon}</span>
+              <span className={`text-xs md:text-sm font-medium ${theme.colors.text}`}>{social.name}</span>
             </a>
-          </div>
+          ))}
+        </div>
+        
+        {/* Availability Badge */}
+        <div className="flex items-center justify-center gap-2 mt-4">
+          <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
+          <span className={`text-xs ${theme.colors.textSecondary}`}>
+            {language === "es" ? "Disponible" : "Available"}
+          </span>
         </div>
       </div>
     </section>
