@@ -203,6 +203,8 @@ export default function Hero() {
       {/* Rainbow Effect Styles */}
       <style>{`
         .rainbow-text {
+          position: relative;
+          display: inline-block;
           background: linear-gradient(90deg, 
             #ff6b6b 0%, 
             #feca57 17%, 
