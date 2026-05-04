@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 
 export default defineConfig({
   base: '/portafolio/',
@@ -10,5 +11,12 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
+    publicDir: 'public',
+    assetsInclude: ['**/*.PNG', '**/*.png', '**/*.jpg', '**/*.jpeg'],
+  },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+    },
   },
 });

@@ -19,7 +19,7 @@ export default function Projects() {
       tech: ["Laravel", "PHP", "MySQL", "Bootstrap"],
       color: "from-cyan-500 to-blue-500",
       link: "https://aldair0308.github.io/vilba-web/index.html",
-      image: "/images/Vilba.png"
+      image: "/images/Vilba.PNG"
     },
     {
       name: language === "es" ? "Plataforma E-commerce" : "E-commerce Platform",
