@@ -65,12 +65,12 @@ export default function Projects() {
               className={`relative p-0.5 rounded-xl md:rounded-2xl bg-gradient-to-br ${project.color} hover:scale-[1.02] transition-all duration-300 cursor-pointer`}
             >
               {/* Project Preview Image */}
-              <div className="h-24 md:h-28 rounded-t-xl overflow-hidden flex items-center justify-center bg-gray-800">
+              <div className="h-24 md:h-28 rounded-t-xl overflow-hidden bg-gray-800">
                 {project.image ? (
                   <img 
                     src={project.image} 
                     alt={project.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain object-center"
                   />
                 ) : (
                   <div className={`w-full h-full bg-gradient-to-br ${project.color} flex items-center justify-center`}>
