@@ -12,12 +12,21 @@ export default function Projects() {
   
   const projects = [
     {
+      name: "VILBA Web",
+      desc: language === "es" 
+        ? "Sitio web empresarial para servicios de construcción y Renta de Maquinaria. Laravel + MySQL + Bootstrap." 
+        : "Business website for construction services and heavy equipment rental. Laravel + MySQL + Bootstrap.",
+      tech: ["Laravel", "PHP", "MySQL", "Bootstrap"],
+      color: "from-cyan-500 to-blue-500",
+      link: "https://aldair0308.github.io/vilba-web/index.html"
+    },
+    {
       name: language === "es" ? "Plataforma E-commerce" : "E-commerce Platform",
       desc: language === "es" 
         ? "Plataforma full-stack con pagos Stripe, panel de admin y analytics" 
         : "Full-stack platform with Stripe payments, admin panel and analytics",
       tech: ["React", "Node.js", "Stripe", "PostgreSQL"],
-      color: "from-cyan-500 to-blue-500"
+      color: "from-purple-500 to-pink-500"
     },
     {
       name: language === "es" ? "Dashboard Analítico" : "Analytics Dashboard",
@@ -25,14 +34,6 @@ export default function Projects() {
         ? "Dashboard en tiempo real con WebSockets y visualizaciones" 
         : "Real-time dashboard with WebSockets and visualizations",
       tech: ["React", "WebSocket", "D3.js", "MongoDB"],
-      color: "from-purple-500 to-pink-500"
-    },
-    {
-      name: language === "es" ? "API RESTful" : "RESTful API",
-      desc: language === "es" 
-        ? "API escalable con autenticación JWT y documentación" 
-        : "Scalable API with JWT authentication and documentation",
-      tech: ["Node.js", "Express", "JWT", "Redis"],
       color: "from-emerald-500 to-teal-500"
     }
   ];
@@ -53,9 +54,12 @@ export default function Projects() {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {projects.map((project, i) => (
-            <div 
-              key={i} 
-              className={`relative p-0.5 rounded-xl md:rounded-2xl bg-gradient-to-br ${project.color} hover:scale-[1.02] transition-all duration-300`}
+            <a 
+              key={i}
+              href={project.link || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`relative p-0.5 rounded-xl md:rounded-2xl bg-gradient-to-br ${project.color} hover:scale-[1.02] transition-all duration-300 cursor-pointer`}
             >
               <div className={`relative p-4 md:p-5 rounded-xl ${theme.colors.card} border ${theme.colors.border} flex flex-col`}>
                 <div className={`text-4xl md:text-5xl font-bold opacity-10 mb-2 ${theme.colors.text}`}>
@@ -88,7 +92,7 @@ export default function Projects() {
                   </svg>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
