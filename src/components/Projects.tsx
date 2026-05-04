@@ -19,7 +19,7 @@ export default function Projects() {
       tech: ["Laravel", "PHP", "MySQL", "Bootstrap"],
       color: "from-cyan-500 to-blue-500",
       link: "https://aldair0308.github.io/vilba-web/index.html",
-      image: "from-orange-600 to-orange-800"
+      image: "/images/Vilba.png"
     },
     {
       name: language === "es" ? "Plataforma E-commerce" : "E-commerce Platform",
@@ -65,15 +65,20 @@ export default function Projects() {
               className={`relative p-0.5 rounded-xl md:rounded-2xl bg-gradient-to-br ${project.color} hover:scale-[1.02] transition-all duration-300 cursor-pointer`}
             >
               {/* Project Preview Image */}
-              <div className={`h-24 md:h-28 rounded-t-xl bg-gradient-to-br ${project.image} flex items-center justify-center`}>
-                <div className="text-center">
-                  <div className="text-white/90 text-xs md:text-sm font-bold tracking-wider uppercase">
-                    {i === 0 ? "VILBA" : i === 1 ? "E-COMMERCE" : "DASHBOARD"}
+              <div className="h-24 md:h-28 rounded-t-xl overflow-hidden flex items-center justify-center bg-gray-800">
+                {project.image ? (
+                  <img 
+                    src={project.image} 
+                    alt={project.name}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className={`w-full h-full bg-gradient-to-br ${project.color} flex items-center justify-center`}>
+                    <div className="text-white/90 text-xs md:text-sm font-bold tracking-wider uppercase">
+                      {project.name}
+                    </div>
                   </div>
-                  <div className="text-white/60 text-[10px] md:text-xs mt-1">
-                    {i === 0 ? "Construction Services" : i === 1 ? "Full Stack App" : "Analytics"}
-                  </div>
-                </div>
+                )}
               </div>
               
               <div className={`relative p-4 md:p-5 rounded-b-xl ${theme.colors.card} border border-t-0 ${theme.colors.border} flex flex-col`}>
