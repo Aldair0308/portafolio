@@ -18,7 +18,8 @@ export default function Projects() {
         : "Business website for construction services and heavy equipment rental. Laravel + MySQL + Bootstrap.",
       tech: ["Laravel", "PHP", "MySQL", "Bootstrap"],
       color: "from-cyan-500 to-blue-500",
-      link: "https://aldair0308.github.io/vilba-web/index.html"
+      link: "https://aldair0308.github.io/vilba-web/index.html",
+      image: "/images/Vilba.PNG"
     },
     {
       name: language === "es" ? "Plataforma E-commerce" : "E-commerce Platform",
@@ -26,7 +27,8 @@ export default function Projects() {
         ? "Plataforma full-stack con pagos Stripe, panel de admin y analytics" 
         : "Full-stack platform with Stripe payments, admin panel and analytics",
       tech: ["React", "Node.js", "Stripe", "PostgreSQL"],
-      color: "from-purple-500 to-pink-500"
+      color: "from-purple-500 to-pink-500",
+      image: "from-violet-600 to-purple-800"
     },
     {
       name: language === "es" ? "Dashboard Analítico" : "Analytics Dashboard",
@@ -34,7 +36,8 @@ export default function Projects() {
         ? "Dashboard en tiempo real con WebSockets y visualizaciones" 
         : "Real-time dashboard with WebSockets and visualizations",
       tech: ["React", "WebSocket", "D3.js", "MongoDB"],
-      color: "from-emerald-500 to-teal-500"
+      color: "from-emerald-500 to-teal-500",
+      image: "from-emerald-600 to-teal-800"
     }
   ];
 
@@ -62,9 +65,20 @@ export default function Projects() {
               className={`relative p-0.5 rounded-xl md:rounded-2xl bg-gradient-to-br ${project.color} hover:scale-[1.02] transition-all duration-300 cursor-pointer`}
             >
               {/* Project Preview Image */}
-              {/* Project Preview - Simple placeholder */}
-              <div className="h-24 md:h-28 rounded-t-xl bg-gradient-to-br from-orange-600 to-orange-800 flex items-center justify-center">
-                <span className="text-white font-bold text-lg md:text-xl tracking-widest">VILBA</span>
+              <div className="h-24 md:h-28 rounded-t-xl overflow-hidden flex items-center justify-center bg-gray-800">
+                {project.image ? (
+                  <img 
+                    src={project.image} 
+                    alt={project.name}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className={`w-full h-full bg-gradient-to-br ${project.color} flex items-center justify-center`}>
+                    <div className="text-white/90 text-xs md:text-sm font-bold tracking-wider uppercase">
+                      {project.name}
+                    </div>
+                  </div>
+                )}
               </div>
               
               <div className={`relative p-4 md:p-5 rounded-b-xl ${theme.colors.card} border border-t-0 ${theme.colors.border} flex flex-col`}>
