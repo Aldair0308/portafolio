@@ -170,10 +170,18 @@ export default function Hero() {
 
           {/* CTA */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-            <a href="#projects" className={`px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r ${theme.colors.gradient} text-white font-semibold rounded-xl hover:scale-105 transition shadow-lg text-sm md:text-base cursor-pointer`}>
+            <a 
+              href="#projects" 
+              onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className={`px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r ${theme.colors.gradient} text-white font-semibold rounded-xl hover:scale-105 transition shadow-lg text-sm md:text-base cursor-pointer`}
+            >
               {t("Ver Proyectos", "View Projects")}
             </a>
-            <a href="#contact" className={`px-6 py-3 md:px-8 md:py-4 ${theme.colors.backgroundSecondary} border ${theme.colors.border} ${theme.colors.text} font-semibold rounded-xl hover:${theme.colors.backgroundTertiary} transition text-sm md:text-base cursor-pointer`}>
+            <a 
+              href="#contact" 
+              onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className={`px-6 py-3 md:px-8 md:py-4 ${theme.colors.backgroundSecondary} border ${theme.colors.border} ${theme.colors.text} font-semibold rounded-xl hover:${theme.colors.backgroundTertiary} transition text-sm md:text-base cursor-pointer`}
+            >
               {t("Contáctame", "Contact Me")}
             </a>
             <a 
