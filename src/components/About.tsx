@@ -30,15 +30,24 @@ export default function About() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* Avatar Card - Bigger on PC */}
+          {/* Photo Cards - 3 semi-stacked */}
           <div className="flex justify-center">
-            <div className="relative">
-              <div className={`w-28 h-28 md:w-56 md:w-72 md:h-72 rounded-2xl md:rounded-3xl bg-gradient-to-br ${theme.colors.gradient} flex items-center justify-center shadow-xl md:shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500 overflow-hidden`}>
+            <div className="relative w-28 h-28 md:w-72 md:h-72">
+              {/* Card 3 - backmost */}
+              <div className="absolute inset-0 -rotate-6 translate-x-4 translate-y-3 rounded-2xl md:rounded-3xl bg-gradient-to-br from-violet-600/30 to-fuchsia-600/20 border border-violet-500/30 backdrop-blur-sm flex items-center justify-center shadow-xl">
+                <span className="text-3xl md:text-7xl font-mono font-bold text-violet-400/40">{"{ }"}</span>
+              </div>
+              {/* Card 2 - middle */}
+              <div className="absolute inset-0 rotate-3 -translate-x-3 translate-y-5 rounded-2xl md:rounded-3xl bg-gradient-to-br from-amber-600/30 to-rose-600/20 border border-amber-500/30 backdrop-blur-sm flex items-center justify-center shadow-xl">
+                <span className="text-3xl md:text-7xl font-mono font-bold text-amber-400/40">&lt;/&gt;</span>
+              </div>
+              {/* Card 1 - front with photo */}
+              <div className="relative w-full h-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10 ring-1 ring-white/5 z-10">
                 <img src="images/aldair.png" alt="Aldair" className="w-full h-full object-cover" />
               </div>
-              {/* Decorative elements - Only on PC */}
-              <div className={`hidden md:block absolute -top-4 -right-4 w-12 h-12 rounded-full bg-gradient-to-r ${theme.colors.gradient} opacity-50 animate-pulse`} />
-              <div className={`hidden md:block absolute -bottom-6 -left-6 w-8 h-8 rounded-full ${theme.colors.accent} opacity-30`} />
+              {/* Decorative elements */}
+              <div className={`hidden md:block absolute -top-4 -right-4 w-12 h-12 rounded-full bg-gradient-to-r ${theme.colors.gradient} opacity-50 animate-pulse z-0`} />
+              <div className={`hidden md:block absolute -bottom-6 -left-6 w-8 h-8 rounded-full ${theme.colors.accent} opacity-30 z-0`} />
             </div>
           </div>
           
