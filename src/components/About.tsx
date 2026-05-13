@@ -33,8 +33,8 @@ export default function About() {
           {/* Avatar Card - Bigger on PC */}
           <div className="flex justify-center">
             <div className="relative">
-              <div className={`w-28 h-28 md:w-56 md:w-72 md:h-72 rounded-2xl md:rounded-3xl bg-gradient-to-br ${theme.colors.gradient} flex items-center justify-center text-5xl md:text-8xl md:text-9xl shadow-xl md:shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500`}>
-                👨‍💻
+              <div className={`w-28 h-28 md:w-56 md:w-72 md:h-72 rounded-2xl md:rounded-3xl bg-gradient-to-br ${theme.colors.gradient} flex items-center justify-center shadow-xl md:shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500 overflow-hidden`}>
+                <img src="images/aldair.png" alt="Aldair" className="w-full h-full object-cover" />
               </div>
               {/* Decorative elements - Only on PC */}
               <div className={`hidden md:block absolute -top-4 -right-4 w-12 h-12 rounded-full bg-gradient-to-r ${theme.colors.gradient} opacity-50 animate-pulse`} />
