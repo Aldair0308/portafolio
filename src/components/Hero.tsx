@@ -127,7 +127,7 @@ export default function Hero() {
           </div>
 
           {/* Rainbow Effect Name */}
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-3">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">
             <span className="bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent">
               {t("Hola, soy", "Hi, I'm")}
             </span>
@@ -143,7 +143,7 @@ export default function Hero() {
           </p>
 
           {/* Description */}
-          <p className={`${theme.colors.textMuted} mb-6 text-sm md:text-base max-w-sm mx-auto lg:mx-0`}>
+          <p className={`${theme.colors.textMuted} mb-6 text-sm md:text-base max-w-[404px] mx-auto lg:mx-0`}>
             {t(
               "Desarrollador Full Stack con experiencia en APIs REST, lógica de negocio y despliegues en producción, trabajando con Laravel, NestJS y FastAPI. Desarrollo frontend con React, Bootstrap y Tailwind, y también creo aplicaciones móviles con React Native integrando notificaciones push con Firebase. He desplegado proyectos en VPS usando Docker para estandarizar entornos y facilitar el despliegue.",
               "Full Stack Developer experienced in REST APIs, business logic and production deployments, working with Laravel, NestJS and FastAPI. Frontend development with React, Bootstrap and Tailwind, and I also build mobile apps with React Native integrating push notifications with Firebase. I have deployed projects on VPS using Docker to standardize environments and streamline deployment."
