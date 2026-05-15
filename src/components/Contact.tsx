@@ -14,10 +14,10 @@ export default function Contact() {
   };
 
   const socialLinks = [
-    { name: "GitHub", icon: "🐙", url: "https://github.com" },
-    { name: "LinkedIn", icon: "💼", url: "https://linkedin.com" },
-    { name: "Twitter", icon: "🐦", url: "https://twitter.com" },
-    { name: "Email", icon: "📧", url: "mailto:hello@aldair.dev" }
+    { name: "GitHub", icon: "🐙", url: "https://github.com/Aldair0308" },
+    { name: "Email", icon: "📧", url: "mailto:al222111405@gmail.com" },
+    { name: "WhatsApp", icon: "📱", url: "https://wa.me/527207538100" },
+    { name: "LinkedIn", icon: "💼", url: "https://linkedin.com/in/aldair0308" }
   ];
 
   return (

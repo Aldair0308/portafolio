@@ -122,7 +122,7 @@ export default function Hero() {
           {/* Tag */}
           <div className="mb-4">
             <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-400 text-xs font-medium tracking-wide">
-              {t("DESARROLLADOR FULLSTACK", "FULLSTACK DEVELOPER")}
+              {t("Desarrollador Full Stack", "Full Stack Developer")}
             </span>
           </div>
 
@@ -133,20 +133,20 @@ export default function Hero() {
             </span>
             <br />
             <span className="rainbow-text">
-              Aldair
+              Aldair Morales Gutiérrez
             </span>
           </h1>
 
           {/* Role */}
           <p className="text-lg md:text-xl text-gray-400 mb-4 font-light">
-            {t("Creando experiencias digitales con tecnología moderna", "Building digital experiences with modern technology")}
+            {t("Full Stack Developer | Laravel • NestJS • FastAPI • React", "Full Stack Developer | Laravel • NestJS • FastAPI • React")}
           </p>
 
           {/* Description */}
           <p className={`${theme.colors.textMuted} mb-6 text-sm md:text-base max-w-sm mx-auto lg:mx-0`}>
             {t(
-              "Desarrollador full-stack enfocado en aplicaciones escalables, código limpio y experiencias de usuario excepcionales.",
-              "Full-stack developer focused on scalable applications, clean code, and exceptional user experiences."
+              "Desarrollador Full Stack con experiencia en APIs REST, lógica de negocio y despliegues en producción, trabajando con Laravel, NestJS y FastAPI. Desarrollo frontend con React, Bootstrap y Tailwind, y también creo aplicaciones móviles con React Native integrando notificaciones push con Firebase. He desplegado proyectos en VPS usando Docker para estandarizar entornos y facilitar el despliegue.",
+              "Full Stack Developer experienced in REST APIs, business logic and production deployments, working with Laravel, NestJS and FastAPI. Frontend development with React, Bootstrap and Tailwind, and I also build mobile apps with React Native integrating push notifications with Firebase. I have deployed projects on VPS using Docker to standardize environments and streamline deployment."
             )}
           </p>
 
@@ -221,10 +221,10 @@ export default function Hero() {
                 </div>
                 <div className="pl-2 lg:pl-3 space-y-0.5 lg:space-y-1">
                   <div><span className="text-purple-400">interface</span> <span className={`text-${theme.colors.accent}-400`}>Developer</span> {"{"}</div>
-                  <div className="pl-2 lg:pl-4"><span className="text-gray-400">name:</span> <span className="text-yellow-300">"Aldair"</span>;</div>
-                  <div className="pl-2 lg:pl-4"><span className="text-gray-400">role:</span> <span className="text-yellow-300">"Full-Stack"</span>;</div>
-                  <div className="pl-2 lg:pl-4"><span className="text-gray-400">skills:</span> <span className="text-yellow-300">[</span><span className="text-orange-300">React</span><span className="text-gray-400">,</span> <span className="text-orange-300">Node</span><span className="text-gray-400">,</span> <span className="text-orange-300">TS</span><span className="text-yellow-300">]</span>;</div>
-                  <div className="pl-2 lg:pl-4"><span className="text-gray-400">experience:</span> <span className="text-blue-300">5</span><span className="text-gray-400">{t("+ años", "+ years")}</span></div>
+                  <div className="pl-2 lg:pl-4"><span className="text-gray-400">name:</span> <span className="text-yellow-300">"Aldair Morales Gutiérrez"</span>;</div>
+                  <div className="pl-2 lg:pl-4"><span className="text-gray-400">role:</span> <span className="text-yellow-300">"Full Stack Developer"</span>;</div>
+                  <div className="pl-2 lg:pl-4"><span className="text-gray-400">skills:</span> <span className="text-yellow-300">[</span><span className="text-orange-300">Laravel</span><span className="text-gray-400">,</span> <span className="text-orange-300">NestJS</span><span className="text-gray-400">,</span> <span className="text-orange-300">FastAPI</span><span className="text-gray-400">,</span> <span className="text-orange-300">React</span><span className="text-yellow-300">]</span>;</div>
+                  <div className="pl-2 lg:pl-4"><span className="text-gray-400">experience:</span> <span className="text-blue-300">2</span><span className="text-gray-400">{t("+ años", "+ years")}</span></div>
                   <div className="pl-2 lg:pl-4"><span className="text-gray-400">available:</span> <span className="text-green-400">true</span>;</div>
                   <div>{"}"}</div>
                   <div className="h-2 md:h-3" />

@@ -12,37 +12,40 @@ export default function Experience() {
 
   const experience = [
     {
-      role: language === "es" ? "Desarrollador Full-Stack" : "Full-Stack Developer",
-      company: "TechCo",
-      period: language === "es" ? "2021 - Hoy" : "2021 - Present",
-      desc: language === "es" 
-        ? "Arquitectura de microservicios, CI/CD, liderazgo de equipo de 5 desarrolladores" 
-        : "Microservices architecture, CI/CD, team leadership of 5 developers",
-      highlights: language === "es" 
-        ? ["AWS Lambda", "Kubernetes", "Team Lead"] 
-        : ["AWS Lambda", "Kubernetes", "Team Lead"]
+      role: language === "es" ? "Full Stack Web Developer" : "Full Stack Web Developer",
+      company: "Dirección General de Innovación — Gobierno del Estado de México",
+      period: "Ene 2026 – Abr 2026",
+      desc: language === "es"
+        ? "Participé como desarrollador Full Stack en la creación de un sistema de gestión de riesgos para Oficialía Mayor del Gobierno del Estado de México. Desarrollo backend con FastAPI, frontend con templates HTML y gestión de base de datos MySQL. Despliegue del sistema y configuración con Docker. Implementación de autenticación y módulos administrativos para la gestión de información institucional."
+        : "I participated as a Full Stack developer in creating a risk management system for the General Office of the Government of the State of Mexico. Backend development with FastAPI, frontend with HTML templates and MySQL database management. System deployment and Docker configuration. Implementation of authentication and administrative modules for institutional information management.",
+      highlights: ["Python", "FastAPI", "MySQL", "Docker", "Git", "HTML", "CSS", "JavaScript"]
     },
     {
-      role: language === "es" ? "Desarrollador Frontend" : "Frontend Developer",
-      company: "Innovate Labs",
-      period: language === "es" ? "2019 - 2021" : "2019 - 2021",
+      role: language === "es" ? "Desarrollador Backend" : "Backend Developer",
+      company: "UTVstay – Sistema de Gestión de Documentación de Estadías",
+      period: "Ene 2025 – Ago 2025",
       desc: language === "es"
-        ? "SPA con React + Redux, optimización de rendimiento"
-        : "SPA with React + Redux, performance optimization",
-      highlights: language === "es" 
-        ? ["React", "Redux", "Performance"] 
-        : ["React", "Redux", "Performance"]
+        ? "Desarrollo de un sistema backend con Laravel para la gestión de documentación de estadías. Implementación de autenticación, control de acceso y validaciones. Diseño de base de datos y estructura enfocada en seguridad y trazabilidad de la información."
+        : "Development of a backend system with Laravel for internship documentation management. Implementation of authentication, access control and validations. Database design and structure focused on security and information traceability.",
+      highlights: ["Laravel", "PHP", "MySQL", "Autenticación"]
     },
     {
-      role: language === "es" ? "Desarrollador Junior" : "Junior Developer",
-      company: "StartUp XYZ",
-      period: language === "es" ? "2018 - 2019" : "2018 - 2019",
+      role: language === "es" ? "Desarrollador Backend" : "Backend Developer",
+      company: "Merrash – Sitio Web Corporativo",
+      period: "May 2024 – Ago 2024",
       desc: language === "es"
-        ? "Desarrollo full-stack con Node.js y MongoDB"
-        : "Full-stack development with Node.js and MongoDB",
-      highlights: language === "es" 
-        ? ["Node.js", "MongoDB", "REST API"] 
-        : ["Node.js", "MongoDB", "REST API"]
+        ? "Desarrollo del backend de un sitio web corporativo utilizando Laravel. Implementación de lógica de negocio, gestión de contenido y estructura de datos con MySQL. Diseño de una arquitectura backend mantenible y preparada para futuras ampliaciones. Configuración de entornos de desarrollo y producción, priorizando estabilidad y buenas prácticas."
+        : "Backend development of a corporate website using Laravel. Implementation of business logic, content management and data structure with MySQL. Design of a maintainable backend architecture ready for future expansions. Configuration of development and production environments, prioritizing stability and best practices.",
+      highlights: ["Laravel", "PHP", "MySQL", "Arquitectura"]
+    },
+    {
+      role: language === "es" ? "Desarrollador Backend" : "Backend Developer",
+      company: "Pettech – Plataforma Tecnológica e Integración IoT",
+      period: "Ene 2024 – Abr 2024",
+      desc: language === "es"
+        ? "Desarrollo de APIs REST con NestJS y TypeScript. Integración backend con aplicación móvil React Native. Implementación de lógica para comunicación y procesamiento de datos provenientes de un dispositivo ESP. Diseño modular enfocado en mantenibilidad y escalabilidad."
+        : "REST API development with NestJS and TypeScript. Backend integration with React Native mobile app. Implementation of logic for communication and data processing from an ESP device. Modular design focused on maintainability and scalability.",
+      highlights: ["NestJS", "TypeScript", "React Native", "IoT", "REST API"]
     }
   ];
 

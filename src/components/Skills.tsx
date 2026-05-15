@@ -11,14 +11,14 @@ export default function Skills() {
   const title = language === "es" ? "Habilidades" : "Skills";
 
   const skills = [
-    { name: "React", level: 95, icon: "⚛️" },
-    { name: "Node.js", level: 90, icon: "🟢" },
-    { name: "TypeScript", level: 92, icon: "🔷" },
+    { name: "Laravel", level: 90, icon: "⚡" },
+    { name: "React", level: 88, icon: "⚛️" },
+    { name: "TypeScript", level: 85, icon: "🔷" },
+    { name: "FastAPI", level: 85, icon: "🐍" },
+    { name: "NestJS", level: 82, icon: "🟩" },
     { name: "Docker", level: 85, icon: "🐳" },
-    { name: "AWS", level: 80, icon: "☁️" },
-    { name: "PostgreSQL", level: 88, icon: "🐘" },
-    { name: "MongoDB", level: 85, icon: "🍃" },
-    { name: "GraphQL", level: 82, icon: "◼️" }
+    { name: "React Native", level: 80, icon: "📱" },
+    { name: "MySQL", level: 88, icon: "🗃️" }
   ];
 
   useEffect(() => {
@@ -74,7 +74,7 @@ export default function Skills() {
         {/* Additional Skills - Smaller tags on mobile */}
         <div className="mt-6 md:mt-8">
           <div className="flex flex-wrap justify-center gap-1.5 md:gap-2">
-            {["Next.js", "Redis", "Prisma", "Tailwind", "Figma", "Git", "CI/CD"].map((tech, i) => (
+            {["Python", "JavaScript", "HTML", "CSS", "Bootstrap", "Tailwind", "MongoDB", "Postgres", "Firebase", "VPS", "Git", "GitHub"].map((tech, i) => (
               <span 
                 key={i} 
                 className={`px-2.5 md:px-3 py-1 rounded-full text-xs ${theme.colors.backgroundTertiary} ${theme.colors.textSecondary}`}

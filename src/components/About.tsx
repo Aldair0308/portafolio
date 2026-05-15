@@ -8,11 +8,11 @@ export default function About() {
   const title = language === "es" ? "Sobre Mí" : "About Me";
   const skillsTitle = language === "es" ? "Habilidades" : "Skills";
   const description = language === "es"
-    ? "Desarrollador full-stack con más de 5 años de experiencia creando aplicaciones web con React, Node.js, TypeScript y servicios en la nube. Apasionado por la arquitectura limpia, código mantenible y entregar experiencias de usuario excepcionales."
-    : "Full-stack developer with 5+ years of experience building web applications with React, Node.js, TypeScript and cloud services. Passionate about clean architecture, maintainable code and delivering exceptional user experiences.";
+    ? "Desarrollador Full Stack con experiencia en APIs REST, lógica de negocio y despliegues en producción, trabajando con Laravel, NestJS y FastAPI. Desarrollo frontend con React, Bootstrap y Tailwind, y también creo aplicaciones móviles con React Native integrando notificaciones push con Firebase. He desplegado proyectos en VPS usando Docker para estandarizar entornos y facilitar el despliegue."
+    : "Full Stack Developer experienced in REST APIs, business logic and production deployments, working with Laravel, NestJS and FastAPI. Frontend development with React, Bootstrap and Tailwind, and I also build mobile apps with React Native integrating push notifications with Firebase. I have deployed projects on VPS using Docker to standardize environments and streamline deployment.";
 
   const technologies = [
-    "React", "Node.js", "TypeScript", "PostgreSQL", "MongoDB", "AWS", "Docker", "GraphQL", "Redis", "Next.js"
+    "Laravel", "NestJS", "FastAPI", "Python", "React", "React Native", "TypeScript", "JavaScript", "MySQL", "MongoDB", "Postgres", "Docker", "Firebase"
   ];
 
   return (
